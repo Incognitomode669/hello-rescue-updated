@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/afterPoisonousContaminationContent_back"
+        android:layout_width="@dimen/margin_60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="After"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="0dp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/afterPoisonousContamination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:text="After Poison Contamination (Recovery and Cleanup)"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/afterPoisonousContaminationTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  1. Seek Medical Help:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/afterPoisonousContaminationContent1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Even if symptoms seem mild, seek medical attention after exposure to any poison. Some poisons may have delayed effects.
+\n•Keep any containers, labels, or samples of the poison to provide information to healthcare professionals."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/afterPoisonousContaminationTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  2. Decontaminate the Area:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/afterPoisonousContaminationContent2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Once it's safe, clean up any contaminated areas using recommended procedures for hazardous materials. Wear protective gear during the cleanup.
+\n•Dispose of contaminated items (clothes, tools, etc.) as hazardous waste."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/afterPoisonousContaminationTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  3. Monitor for Symptoms:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/afterPoisonousContaminationContent3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Watch for symptoms of poisoning, which can include dizziness, headaches, nausea, difficulty breathing, or chemical burns on the skin.
+\n•If symptoms worsen, seek further medical assistance."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/afterPoisonousContaminationTitle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  4. Report the Incident:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/afterPoisonousContaminationContent4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Report the contamination to local authorities, environmental agencies, or health departments to prevent future incidents and help others avoid exposure.
+\n•If contamination occurred at your workplace, inform your supervisor or safety officer immediately."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

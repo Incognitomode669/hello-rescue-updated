@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/terms_back"
+        android:layout_width="@dimen/margin_60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="Before"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="0dp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/beforeTyphoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:text="Before a Typhoon (Preparation)"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/beforeTyphoonTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  1. Stay Informed:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeTyphoonContent1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Monitor weather forecasts, government advisories, and emergency alerts.
+                    \n•Know the local evacuation plans and routes."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/beforeTyphoonTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  2. Prepare an Emergency Kit:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeTyphoonContent2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:lineSpacingExtra="2dp"
+                    android:layout_marginEnd="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Include essentials like water, non-perishable food, medications, flashlights, batteries, a first-aid kit, and important documents in waterproof bags.
+                    \n•Have extra cash, as ATMs may not work during power outages."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/beforeTyphoonTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  3. Secure Your Home:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeTyphoonContent3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:lineSpacingExtra="2dp"
+                    android:layout_marginEnd="10dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Reinforce doors, windows, and roofs, and bring in outdoor furniture or any loose objects that could become dangerous in high winds.
+                    \n•Clear gutters and drains to prevent flooding."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/beforeTyphoonTitle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  4. Identify a Safe Area:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeTyphoonContent4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Plan to move to higher ground if you are in a low-lying or flood-prone area.
+                    \n•Know where the nearest evacuation center or safe shelter is."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

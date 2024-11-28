@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/duringInjuryContent_back"
+        android:layout_width="@dimen/margin_60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="During"
+        android:textSize="24dp"
+        android:layout_marginTop="@dimen/margin_60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="0dp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/duringInjury"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:text="During an Injury (Immediate Response)"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/duringInjuryTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  1. Stay Calm:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringInjuryContent1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Take a deep breath and assess the situation to avoid panic, which can lead to poor decision-making."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/duringInjuryTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  2. Assess the Injury:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringInjuryContent2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Determine the severity of the injury. Check for signs of serious injuries such as severe pain, inability to move the affected area, or visible deformities."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/duringInjuryTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  3. Apply First Aid:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringInjuryContent3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•For Minor Injuries: Use the RICE method:
+\n•Rest: Avoid using the injured area.
+\n•Ice: Apply ice packs for 15-20 minutes to reduce swelling.
+\n•Compression: Wrap the area with an elastic bandage to minimize swelling.
+\n•Elevation: Raise the injured area above the level of the heart.
+\n•For Severe Injuries: If you suspect fractures, dislocations, or severe bleeding, avoid moving the person and call emergency services immediately."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/duringInjuryTitle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  4. Seek Help:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringInjuryContent4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Call for medical assistance if the injury is serious or if there’s uncertainty about the severity."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_mobile_number_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/flag_transparent">
+
+
+    <TableLayout
+        android:id="@+id/tablelayout"
+        android:layout_height="52dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/rectangle_border3"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        >
+
+        <!-- First Row: Logo -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <!-- Logo -->
+            <ImageView
+                android:id="@+id/logo_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="8dp"
+
+                android:src="@drawable/number_dialogue_icon" />
+
+            <!-- Text/Paragraphs -->
+            <TextView
+                android:id="@+id/tableText"
+                android:layout_width="236dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="1sp"
+                android:ellipsize="end"
+                android:fontFamily="@font/inika_regular"
+                android:maxLines="2"
+                android:padding="9dp"
+                android:text="You will receive a notification shortly containing your \n login details. Thank you for your patience."
+                android:textColor="@color/black"
+                android:textSize="8sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="379dp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

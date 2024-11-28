@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/duringEarthquakeContent_back"
+        android:layout_width="@dimen/margin_60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="During"
+        android:textSize="22dp"
+        android:layout_marginTop="@dimen/margin_60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="0dp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/margin_60dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/duringEarthquake"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:text="During an Earthquake (Safety)"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/duringEarthquakeTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  1. Drop, Cover, and Hold On:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringEarthquakeContent1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Drop to your hands and knees to prevent being knocked over.
+\n•Cover your head and neck under sturdy furniture like a table or desk. If no cover is available, get low next to an interior wall away from windows.
+\n•Hold On to your cover until the shaking stops. Stay where you are until the earthquake is over."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/duringEarthquakeTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  2. Stay Indoors:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringEarthquakeContent2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Do not run outside during the shaking. The exterior of buildings, including windows, facades, and debris, can be dangerous.
+\n•If you're in bed, stay there and cover your head with a pillow."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/duringEarthquakeTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  3. If Outdoors:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringEarthquakeContent3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Move to an open area away from buildings, trees, streetlights, and utility wires.
+\n•If you're driving, pull over safely, away from overpasses, bridges, and large buildings, and stay in the vehicle until the shaking stops."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/duringEarthquakeTitle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  4. If in a High-Rise Building:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/duringEarthquakeContent4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Move away from windows and exterior walls.
+\n•Do not use elevators. The power may fail, and elevators can get stuck."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

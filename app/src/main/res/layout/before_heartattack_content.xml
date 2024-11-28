@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/beforeHeartAttackContent_back"
+        android:layout_width="@dimen/margin_60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="Before"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="40dp"
+        android:elevation="0dp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/beforeInjury"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:text="Before a Heart Attack (Prevention)"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/beforeHeartAttackTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  1. Know Your Risk Factors:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeHeartAttackContent1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Be aware of personal risk factors such as high blood pressure, high cholesterol, diabetes, obesity, smoking, and family history of heart disease."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/beforeHeartAttackTitle2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  2. Maintain a Healthy Lifestyle:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeHeartAttackContent2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Eat a Heart-Healthy Diet: Focus on fruits, vegetables, whole grains, lean proteins, and healthy fats while reducing saturated fats, trans fats, and sodium.
+                    \n•Exercise Regularly: Aim for at least 150 minutes of moderate aerobic activity each week.
+\n•Quit Smoking: If you smoke, seek resources to help you quit. Avoid exposure to secondhand smoke."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/beforeHeartAttackTitle3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  3. Manage Stress:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeHeartAttackContent3"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Practice stress-reducing techniques such as mindfulness, meditation, or yoga to improve overall heart health."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/beforeHeartAttackTitle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  4. Regular Check-Ups:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeHeartAttackContent4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Visit your healthcare provider for regular screenings of blood pressure, cholesterol levels, and glucose levels. Follow their advice for managing any existing conditions."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/beforeHeartAttackTitle5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:text="  5. Know the Symptoms:"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/beforeHeartAttackContent5"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:padding="1dp"
+                    android:layout_marginEnd="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:justificationMode="inter_word"
+                    android:fontFamily="@font/inika_regular"
+                    android:text="•Familiarize yourself with the signs of a heart attack, both for yourself and for those around you."
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

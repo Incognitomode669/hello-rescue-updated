@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.ServicesFragment">
+
+    <ImageButton
+        android:id="@+id/SafetyTips_back"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/Police_Station_txt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/Police_Station_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Safety Tips"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/inria_serif_bold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <TextView
+        android:id="@+id/SafetyTips_txt2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="What to do in disasters"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/HealthTips_txt"
+        app:layout_constraintTop_toBottomOf="@id/Police_Station_txt" />
+
+    <LinearLayout
+        android:id="@+id/box_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="35dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SafetyTips_txt2">
+
+        <!-- Flood Button -->
+        <LinearLayout
+            android:id="@+id/Flood_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_Flood"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ripple_services"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/flood_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Flood"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Typhoon Button -->
+        <LinearLayout
+            android:id="@+id/Typhoon_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_Typhoon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ripple_services"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/typhoon_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Typhoon"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Typhoon Button -->
+
+        <LinearLayout
+            android:id="@+id/Landslide_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_Landslide"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ripple_services"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/landslide_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Landslide"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Earthquake Button -->
+
+    <LinearLayout
+        android:id="@+id/box_container_earthquake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/box_container"
+        app:layout_constraintTop_toBottomOf="@+id/box_container">
+
+
+        <LinearLayout
+            android:id="@+id/Earthquake_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_Earthquake"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ripple_services"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/earthquake_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Eatchquake"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/HealthTips_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="Health Tips"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/box_container_earthquake"
+        app:layout_constraintTop_toBottomOf="@+id/box_container_earthquake" />
+
+
+    <LinearLayout
+        android:id="@+id/box_container_Health"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/box_container"
+        app:layout_constraintStart_toStartOf="@+id/box_container_earthquake"
+        app:layout_constraintTop_toBottomOf="@+id/HealthTips_txt">
+
+        <!-- Flood Button -->
+        <LinearLayout
+            android:id="@+id/HeartAttack_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_HeartAttack"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ripple_services"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/heartattack_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Heart Attack"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Typhoon Button -->
+        <LinearLayout
+            android:id="@+id/PoisonContamination_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_PoisonContamination"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/ripple_services"
+                android:src="@drawable/poisoncontamination_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Poison Conta..."
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Typhoon Button -->
+
+        <LinearLayout
+            android:id="@+id/Injury_btn"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_background_services"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/imageButton_Injury"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/ripple_services"
+                android:layout_marginBottom="2dp"
+                android:src="@drawable/injury_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inria_serif_bold"
+                android:text="Injury"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

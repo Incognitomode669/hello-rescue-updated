@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name"> Rescue</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_and_conditions_text">Thank you for using our Hello Rescue Application.This Privacy Policy is designed to inform you of how we collect, use, disclose, and protect your personal information. Your privacy is of utmost importance to us, and we are committed to safeguarding your data while providing you with a seamless and reliable user experience.\n\n1. Information We Collect\n  \n1.1. Personal Information: The app may collect certain personally identifiable information (“Personal Information”) when you register or use the app. This information may include but is not limited to:\n         -Name\n         -Phone number\n         - ID\n1.2. Non-Personal Information: In addition to Personal Information, we may collect non-personally identifiable information (“Non-Personal Information”) about your device, usage patterns, and interactions with the app. Non-Personal Information is collected to enhance the functionality and improve the app’s overall performance.  \n\n2. How We Use Your Information</string>
+    <string name="msg_token_fmt">FCM Registration Token: %1$s</string>
+    <string name="title_home">Home</string>
+    <string name="title_tips">Tips</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_hotline">Hotline</string>
+    <string name="select">Type of Incident</string>
+
+    <string name="content_home">This is the Home Screen</string>
+    <string name="content_tips">I miss you :></string>
+    <string name="content_notification">Can We Try Again 🥹</string>
+    <string name="content_profile">Need Help dilfs 😔 </string>
+    <string name="content_hotline">thank you beyonce🫂</string>
+    <string name="report_emergency">Report Emergency</string>
+    <string name="you_are_one_tap_away_from_safety">You are one tap away from safety</string>
+    <string name="description" tools:ignore="TypographyEllipsis">Description...</string>
+    <string name="report_to_treat_mdrrm_office"><![CDATA[Report to\nTREAT & MDRRM OFFICE]]></string>
+    <string name="patient">PATIENT</string>
+
+    <string-array name="incident_types_fire">
+        <item>Structural Fires</item>
+        <item>Wildfires</item>
+        <item>Vehicle Fires</item>
+        <item>Electrical Fires</item>
+        <item>Chemical Fires</item>
+    </string-array>
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_services"
+        android:name="com.example.hellorescue.ui.ServicesFragment"
+        android:label="@string/title_tips"
+        tools:layout="@layout/fragment_services">
+
+
+
+        <action
+            android:id="@+id/action_servicesFragment_to_navigation_safetytips"
+            app:destination="@id/navigation_safetytips"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"/>
+
+
+        <action
+            android:id="@+id/action_servicesFragment_to_navigation_facilities"
+            app:destination="@id/navigation_facilites"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_safetytips"
+        android:name="com.example.hellorescue.ui.SafetyTipsFragment"
+        android:label="Safety Tips"
+        tools:layout="@layout/fragment_safetytips" >
+
+        <action
+            android:id="@+id/action_safetytips_to_flood"
+            app:destination="@id/navigation_flood"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+        <action
+            android:id="@+id/action_safetytips_to_typhoon"
+            app:destination="@id/navigation_typhoon"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+           />
+        <action
+            android:id="@+id/action_safetytips_to_landslide"
+            app:destination="@id/navigation_landslide"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+             />
+
+        <action
+            android:id="@+id/action_safetytips_to_earthquake"
+            app:destination="@id/navigation_earthquake"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_safetytips_to_heartattack"
+            app:destination="@id/navigation_heartattack"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_safetytips_to_poisoncontamination"
+            app:destination="@id/navigation_poisonouscontamination"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_safetytips_to_injury"
+            app:destination="@id/navigation_injury"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+
+
+
+    </fragment>
+
+
+
+
+<!--    flood navigation-->
+
+    <fragment
+        android:id="@+id/navigation_flood"
+        android:name="com.example.hellorescue.ui.FloodFragment"
+        android:label="Flood"
+        tools:layout="@layout/flood">
+
+        <action
+            android:id="@+id/action_flood_to_beforeFlood"
+            app:destination="@id/navigation_beforeFlood"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_flood_to_duringFlood"
+            app:destination="@id/navigation_duringFlood"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+
+        <action
+            android:id="@+id/action_flood_to_afterFlood"
+            app:destination="@id/navigation_afterFlood"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_beforeFlood"
+        android:name="com.example.hellorescue.ui.BeforeFloodFragment"
+        android:label="Before Flood"
+        tools:layout="@layout/before_flood_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringFlood"
+        android:name="com.example.hellorescue.ui.DuringFloodFragment"
+        android:label="During Flood"
+        tools:layout="@layout/during_flood_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterFlood"
+        android:name="com.example.hellorescue.ui.AfterFloodFragment"
+        android:label="After Flood"
+        tools:layout="@layout/after_flood_content" />
+
+<!--    typhoon navigation-->
+    <fragment
+        android:id="@+id/navigation_typhoon"
+        android:name="com.example.hellorescue.ui.TyphoonFragment"
+        android:label="Flood"
+        tools:layout="@layout/typhoon" >
+
+        <action
+            android:id="@+id/action_typhoon_to_beforeTyphoon"
+            app:destination="@id/navigation_beforeTyphoon"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_typhoon_to_duringTyphoon"
+            app:destination="@id/navigation_duringTyphoon"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_typhoon_to_afterTyphoon"
+            app:destination="@id/navigation_afterTyphoon"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_beforeTyphoon"
+        android:name="com.example.hellorescue.ui.BeforeTyphoonFragment"
+        android:label="Before Typhoon"
+        tools:layout="@layout/before_typhoon_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringTyphoon"
+        android:name="com.example.hellorescue.ui.DuringTyphoonFragment"
+        android:label="During Typhoon"
+        tools:layout="@layout/during_typhoon_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterTyphoon"
+        android:name="com.example.hellorescue.ui.AfterTyphoonFragment"
+        android:label="After Typhoon"
+        tools:layout="@layout/after_typhoon_content" />
+
+
+<!--    landslide navigation-->
+    <fragment
+        android:id="@+id/navigation_landslide"
+        android:name="com.example.hellorescue.ui.LandslideFragment"
+        android:label="Landslide"
+        tools:layout="@layout/landslide">
+
+        <action
+            android:id="@+id/action_landslide_to_beforeLandslide"
+            app:destination="@id/navigation_beforeLandslide"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_landslide_to_duringLandslide"
+            app:destination="@id/navigation_duringLandslide"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_landslide_to_afterLandslide"
+            app:destination="@id/navigation_afterLandslide"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_beforeLandslide"
+        android:name="com.example.hellorescue.ui.BeforeLandslideFragment"
+        android:label="Before Landslide"
+        tools:layout="@layout/before_landslide_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringLandslide"
+        android:name="com.example.hellorescue.ui.DuringLandslideFragment"
+        android:label="During Landslide"
+        tools:layout="@layout/during_landslide_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterLandslide"
+        android:name="com.example.hellorescue.ui.AfterLandslideFragment"
+        android:label="After Landslide"
+        tools:layout="@layout/after_landslide_content" />
+
+
+<!--    earthquake navigation-->
+    <fragment
+        android:id="@+id/navigation_earthquake"
+        android:name="com.example.hellorescue.ui.EarthquakeFragment"
+        android:label="Earthquake"
+        tools:layout="@layout/earthquake">
+
+        <action
+            android:id="@+id/action_earthquake_to_beforeEarthquake"
+            app:destination="@id/navigation_beforeEarthquake"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_earthquake_to_duringEarthquake"
+            app:destination="@id/navigation_duringEarthquake"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_earthquake_to_afterEarthquake"
+            app:destination="@id/navigation_afterEarthquake"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/navigation_beforeEarthquake"
+        android:name="com.example.hellorescue.ui.BeforeEarthquakeFragment"
+        android:label="Before Earthquake"
+        tools:layout="@layout/before_earthquake_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringEarthquake"
+        android:name="com.example.hellorescue.ui.DuringEarthquakeFragment"
+        android:label="During Earthquake"
+        tools:layout="@layout/during_earthquake_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterEarthquake"
+        android:name="com.example.hellorescue.ui.AfterEarthquakeFragment"
+        android:label="After Earthquake"
+        tools:layout="@layout/after_earthquake_content" />
+
+
+
+<!--    heart attack navigation-->
+    <fragment
+        android:id="@+id/navigation_heartattack"
+        android:name="com.example.hellorescue.ui.HeartAttackFragment"
+        android:label="Heart Attack"
+        tools:layout="@layout/heartattack">
+
+        <action
+            android:id="@+id/action_heartattack_to_beforeHeartAttack"
+            app:destination="@id/navigation_beforeHeartAttack"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_heartattack_to_duringHeartAttack"
+            app:destination="@id/navigation_duringHeartAttack"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_heartattack_to_afterHeartAttack"
+            app:destination="@id/navigation_afterHeartAttack"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_beforeHeartAttack"
+        android:name="com.example.hellorescue.ui.BeforeHeartAttackFragment"
+        android:label="Before Heart Attack"
+        tools:layout="@layout/before_heartattack_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringHeartAttack"
+        android:name="com.example.hellorescue.ui.DuringHeartAttackFragment"
+        android:label="Before Heart Attack"
+        tools:layout="@layout/during_heartattack_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterHeartAttack"
+        android:name="com.example.hellorescue.ui.AfterHeartAttackFragment"
+        android:label="Before Heart Attack"
+        tools:layout="@layout/after_heartattack_content" />
+
+
+<!--    poisonous contamination navigation-->
+    <fragment
+        android:id="@+id/navigation_poisonouscontamination"
+        android:name="com.example.hellorescue.ui.PoisonousContaminationFragment"
+        android:label="Poison Contamination"
+        tools:layout="@layout/poisoncontamination">
+
+        <action
+            android:id="@+id/action_poisonouscontamination_to_beforePoisonContamination"
+            app:destination="@id/navigation_beforePoisonousContamination"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_poisonouscontamination_to_duringPoisonContamination"
+            app:destination="@id/navigation_duringPoisonousContamination"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_poisonouscontamination_to_afterPoisonContamination"
+            app:destination="@id/navigation_afterPoisonousContamination"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_beforePoisonousContamination"
+        android:name="com.example.hellorescue.ui.BeforePoisonousContaminationFragment"
+        android:label="Before Poison Contamination"
+        tools:layout="@layout/before_poisonouscontamination_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringPoisonousContamination"
+        android:name="com.example.hellorescue.ui.DuringPoisonousContaminationFragment"
+        android:label="During Poison Contamination"
+        tools:layout="@layout/during_poisonouscontamination_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterPoisonousContamination"
+        android:name="com.example.hellorescue.ui.AfterPoisonousContaminationFragment"
+        android:label="After Poison Contamination"
+        tools:layout="@layout/after_poisonouscontamination_content" />
+
+
+
+
+<!--    injury navigation-->
+    <fragment
+        android:id="@+id/navigation_injury"
+        android:name="com.example.hellorescue.ui.InjuryFragment"
+        android:label="Injury"
+        tools:layout="@layout/injury">
+
+        <action
+            android:id="@+id/action_injury_to_beforeInjury"
+            app:destination="@id/navigation_beforeInjury"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_injury_to_duringInjury"
+            app:destination="@id/navigation_duringInjury"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_injury_to_afterInjury"
+            app:destination="@id/navigation_afterInjury"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/navigation_beforeInjury"
+        android:name="com.example.hellorescue.ui.BeforeInjuryFragment"
+        android:label="Before Injury"
+        tools:layout="@layout/before_injury_content" />
+
+    <fragment
+        android:id="@+id/navigation_duringInjury"
+        android:name="com.example.hellorescue.ui.DuringInjuryFragment"
+        android:label="During Injury"
+        tools:layout="@layout/during_injury_content" />
+
+    <fragment
+        android:id="@+id/navigation_afterInjury"
+        android:name="com.example.hellorescue.ui.AfterInjuryFragment"
+        android:label="After Injury"
+        tools:layout="@layout/after_injury_content" />
+
+
+
+
+
+    <fragment
+        android:id="@+id/navigation_facilites"
+        android:name="com.example.hellorescue.ui.FacilitiesFragment"
+        android:label="Safety Tips"
+        tools:layout="@layout/emergency_facilities">
+
+        <action
+            android:id="@+id/action_facilities_to_PoliceStation"
+            app:destination="@id/navigation_PoliceStation"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+    </fragment>
+
+
+
+
+    <fragment
+        android:id="@+id/navigation_PoliceStation"
+        android:name="com.example.hellorescue.ui.PoliceStationFragment"
+        android:label="Police Station"
+        tools:layout="@layout/police_station" />
+
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.hellorescue.ui.ProfileFragment"
+        android:label="@string/title_profile">
+
+<!--        <action-->
+<!--            android:id="@+id/action_profile_to_PersonalInformation"-->
+<!--            app:destination="@id/navigation_PersonalInformation"-->
+<!--            app:enterAnim="@anim/fadein_services"-->
+<!--            app:exitAnim="@anim/fadeout_services"-->
+<!--            app:popEnterAnim="@anim/fadein_services"-->
+<!--            app:popExitAnim="@anim/fadeout_services"-->
+<!--            />-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_profile_to_ChangePassword"-->
+<!--            app:destination="@id/navigation_ChangePassword"-->
+<!--            app:enterAnim="@anim/fadein_services"-->
+<!--            app:exitAnim="@anim/fadeout_services"-->
+<!--            app:popEnterAnim="@anim/fadein_services"-->
+<!--            app:popExitAnim="@anim/fadeout_services"-->
+<!--            />-->
+
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_PersonalInformation"-->
+<!--        android:name="com.example.hellorescue.ui.PersonalInformationFragment"-->
+<!--        android:label="Personal Information"-->
+<!--        tools:layout="@layout/personal_information" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_ChangePassword"-->
+<!--        android:name="com.example.hellorescue.ui.ChangePasswordFragment"-->
+<!--        android:label="Change Password"-->
+<!--        tools:layout="@layout/change_password" />-->
+
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.hellorescue.ui.ClientHomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home"
+        />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.hellorescue.ui.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notification" />
+
+
+
+    <fragment
+        android:id="@+id/navigation_hotline"
+        android:name="com.example.hellorescue.ui.HotlineFragment"
+        android:label="@string/title_hotline" />
+</navigation>

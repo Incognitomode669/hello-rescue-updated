@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".TermsActivity"
+    >
+
+    <ImageButton
+        android:id="@+id/terms_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/flag_transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
+        app:srcCompat="@drawable/arrow1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terms &amp; Condition"
+        android:fontFamily="@font/inria_serif_bold"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:elevation="0dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="60dp"
+        android:paddingStart="30dp"
+        android:paddingTop="15dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tv_terms_conditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inika_regular"
+            android:justificationMode="inter_word"
+            android:lineSpacingExtra="1dp"
+            android:paddingRight="10dp"
+            android:text="\tBy using the Hello Rescue app, you agree to adhere to the following terms and conditions, which are designed to ensure the effective and responsible use of our emergency services. The Hello Rescue app is intended solely for genuine emergencies and to provide timely assistance to individuals in distress. Any misuse of the app, including but not limited to prank calls, false reports, or intentional abuse of the emergency notification system, is strictly prohibited. Such actions not only compromise the effectiveness of our emergency response but also potentially endanger lives. We reserve the right to take legal action and report any fraudulent activities to the appropriate authorities.
+\n\n\tTo maintain the integrity and security of the Hello Rescue system, we require all users to register through the use of a valid national ID. This registration process ensures that only legitimate users can access the emergency services and helps prevent misuse of the app. By registering with your national ID, you acknowledge and accept that any false or fraudulent information provided during registration may lead to immediate suspension of your account and potential legal consequences. Your cooperation in adhering to these terms and conditions is essential to ensuring that the Hello Rescue app remains a reliable tool for those in genuine need of emergency assistance.
+\n\n• Use of Emergency Services\nThe Hello Rescue app is designed to connect users with police, fire, medical, and barangay responders in cases of real emergencies. You agree to use the app for its intended purpose only. Repeated false alarms or any misuse of the app's services, such as generating emergency requests when no legitimate emergency exists, will result in account suspension, and we reserve the right to ban users who violate this policy. Your actions within the app are tracked for security purposes, and any deliberate misuse may be reported to local authorities.
+\n\n• Data Privacy and Security\nYour privacy and data security are of utmost importance to us. By using the Hello Rescue app, you consent to the collection, use, and sharing of your personal data, including your location and emergency details, with the relevant authorities and responders during emergencies. The information collected is strictly used to ensure the timely and accurate response to your emergency and will not be shared with unauthorized third parties. We take all reasonable measures to protect your data; however, you are responsible for ensuring that your login credentials and personal information are kept secure and not shared with others.\n\n\t• Liability\nHello Rescue provides a platform to notify emergency services in real time, but we cannot guarantee the availability, response time, or actions of third-party emergency responders (such as police, fire departments, ambulances, or barangay responders). While we aim to facilitate rapid assistance, we cannot be held liable for any damages, delays, or lack of response resulting from technical issues, network failures, or other factors beyond our control. The app is provided as-is, and any risks associated with its use are assumed by you, the user.\n\n\t• Modifications to Terms and Conditions
+Hello Rescue reserves the right to update or modify these terms and conditions at any time, without prior notice. Any changes made will be communicated to users via the app or email. Continued use of the app after any changes have been implemented constitutes acceptance of the revised terms.\n\n• Governing Law\nThese terms and conditions are governed by and construed in accordance with the laws of the jurisdiction where the Hello Rescue app is operated. Any disputes arising from the use of the app or its services will be resolved under the jurisdiction of local courts.
+\n\nBy using the Hello Rescue app, you agree to comply with these terms and conditions to ensure that the app remains an efficient and reliable platform for providing emergency assistance. Your adherence to these guidelines will help save lives and ensure that resources are allocated to those in genuine need."
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/accept_button"
+        android:layout_width="295dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_shape"
+        android:elevation="20dp"
+        android:padding="10dp"
+        android:shadowColor="#000000"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="ACCEPT"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

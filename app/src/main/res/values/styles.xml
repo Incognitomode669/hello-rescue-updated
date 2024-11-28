@@ -1,0 +1,23 @@
+<!-- styles.xml -->
+<resources>
+    <!-- Define the shape appearance style for rounded corners -->
+    <style name="RoundedCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25dp</item> <!-- Adjust the corner radius as needed -->
+    </style>
+
+    <!-- Apply the rounded corners style to ShapeableImageView -->
+    <style name="RoundedImageView" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="shapeAppearance">@style/RoundedCorners</item>
+    </style>
+
+    <!-- In res/values/styles.xml -->
+    <style name="DropdownWhiteBackground">
+        <item name="android:popupBackground">#FFFFFF</item>
+    </style>
+
+
+
+
+
+</resources>

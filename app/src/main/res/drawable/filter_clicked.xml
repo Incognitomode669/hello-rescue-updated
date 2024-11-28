@@ -1,0 +1,6 @@
+<!-- filter_clicked.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#fff3f0" />
+    <corners android:radius="15dp" />
+    <stroke android:width="1dp" android:color="#fe7c78" />
+</shape>
