@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start"
+    android:background="@color/white"
+    android:id="@+id/police_drawer"
+    tools:context=".ui.AdminPoliceActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="30dp"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView_police"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:layout_below="@id/toolbar" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangular_background"
+        android:id="@+id/navview"
+        android:layout_gravity="start">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:background="@drawable/police_admin_bg">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <!-- PNP Container -->
+            <LinearLayout
+                android:id="@+id/pnp_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="13dp"
+                    android:layout_gravity="top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/inika_regular"
+                        android:text="PHILIPPINE NATIONALPOLICE"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <ImageView
+                        android:id="@+id/ProfileImage"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:padding="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/police_bg"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/police_bg_icon"
+                        android:adjustViewBounds="true"
+                        android:clipToOutline="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingStart="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:fontFamily="@font/inika_regular"
+                            android:text="Responder"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="5dp"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/verified"
+                            android:adjustViewBounds="true"
+                            android:clipToOutline="true" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="0dp"
+                android:overScrollMode="never"
+                android:layout_marginTop="20dp"
+                android:scrollbarThumbVertical="@drawable/custom_scrollbar_thumb"
+                android:scrollbarTrackVertical="@drawable/custom_scrollbar_track"
+                android:background="@drawable/profile_shape"
+                android:paddingTop="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/flag_transparent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
+                    android:paddingBottom="@dimen/cbn_height">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inika_regular"
+                        android:justificationMode="inter_word"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="Account Settings"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/change_password_username_police"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:clickable="true"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+
+                        <ImageButton
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/profile_information_icon" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Account Information"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Update your username/password, be secure."
+                                android:textColor="@color/black"
+                                android:textSize="8sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/update_hotline_police"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+
+                        <ImageButton
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/update_hotline" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Update Hotline"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Update your hotlines."
+                                android:textColor="@color/black"
+                                android:textSize="10sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/history_police"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+
+                        <ImageButton
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/history_icon" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="History"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Recent rescue activities."
+                                android:textColor="@color/black"
+                                android:textSize="8sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sign_out_police"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+
+                        <ImageButton
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/sign_out_icon" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Sign out"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Sign out. Stay safe, help is near."
+                                android:textColor="@color/black"
+                                android:textSize="8sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/inika_regular"
+                        android:justificationMode="inter_word"
+                        android:lineSpacingExtra="2dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Support"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/how_to_use"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:clickable="true"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+
+                        <ImageButton
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/how_to_use_icon" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="How to use Hello Rescue"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Learn more about how application works."
+                                android:textColor="@color/black"
+                                android:textSize="8sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/about"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:clickable="true"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+
+                        <ImageButton
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/about_icon" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="About"
+                                android:textColor="@color/black"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Learn more about us."
+                                android:textColor="@color/black"
+                                android:textSize="8sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
