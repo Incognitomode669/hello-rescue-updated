@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.PoliceStationFragment">
+
+
+
+    <ImageButton
+        android:id="@+id/police_rescue_alert_back"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="back button"
+
+        app:layout_constraintEnd_toStartOf="@+id/Rescue_Alert_Police_txt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow1" />
+
+    <TextView
+        android:id="@+id/Rescue_Alert_Police_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="Rescue Alert"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:layout_marginTop="@dimen/margin_60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/police_rescue_alert_filter"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="Filter Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Rescue_Alert_Police_txt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/filter_responder" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/police_responder_filter_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@drawable/filter_respoder_shape"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+        tools:ignore="MissingConstraints">
+
+
+        <TextView
+            android:id="@+id/filter_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/inika_bold"
+            android:gravity="start"
+            android:layout_marginTop="9dp"
+            android:singleLine="true"
+            android:text="Filter:"
+            android:textColor="@android:color/black"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Type of Accident TextView aligned to center -->
+        <TextView
+            android:id="@+id/type_of_accident"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inika_regular"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:text="Type of Accident"
+            android:textColor="@android:color/black"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Date TextView aligned to end -->
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/inika_regular"
+            android:gravity="end"
+            android:layout_marginTop="10dp"
+            android:singleLine="true"
+            android:text="Date"
+            android:textColor="@android:color/black"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/vehicularAccidentCheckbox"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:gravity="center">
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:id="@+id/VehicularAccidentContainer"
+                        android:layout_width="240dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/incident_shape_bg"
+                        android:layout_marginStart="20dp"
+                        android:clickable="true"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+
+                        <ImageButton
+                            android:id="@+id/vehicularAccidentIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/circle_background_icons"
+                            android:layout_marginStart="10dp"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/vehicular_accident_icon" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/inika_regular"
+                            android:text="Vehicular Accident"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="start"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/DomesticViolenceCheckbox"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:gravity="center">
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:id="@+id/vehicularAccidentContainer"
+                        android:layout_width="240dp"
+                        android:layout_height="45dp"
+                        android:background="@drawable/incident_shape_bg"
+                        android:layout_marginStart="20dp"
+                        android:clickable="true"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+
+                        <ImageButton
+                            android:id="@+id/DomesticViolenceIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/circle_background_icons"
+                            android:layout_marginStart="10dp"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/vehicular_accident_icon" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/inika_regular"
+                            android:text="Domestic Violence"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+

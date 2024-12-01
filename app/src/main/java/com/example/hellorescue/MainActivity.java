@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hellorescue.ui.AdminPoliceActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -75,31 +76,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkLoginCredentials(String username, String password) {
-        usersDatabase.orderByChild("username").equalTo(username)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                                String storedPassword = userSnapshot.child("password").getValue(String.class);
-                                if (storedPassword != null && storedPassword.equals(password)) {
-                                    // Successful login
-                                    navigateToHome();
-                                } else {
-                                    Toast.makeText(MainActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+        // Check for police credentials first
+        if (username.equals("police") && password.equals("police")) {
+            // Successful police login, redirect to AdminPoliceActivity
+            navigateToAdminPolice();
+        } else {
+            // Check Firebase for other user credentials
+            usersDatabase.orderByChild("username").equalTo(username)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                                    String storedPassword = userSnapshot.child("password").getValue(String.class);
+                                    if (storedPassword != null && storedPassword.equals(password)) {
+                                        // Successful login for other users
+                                        navigateToHome();
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
+                            } else {
+                                Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
                             }
-                        } else {
-                            Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
+
+    private void navigateToAdminPolice() {
+        // After successful police login, navigate to AdminPoliceActivity
+        Intent intent = new Intent(MainActivity.this, AdminPoliceActivity.class);
+        startActivity(intent);
+        finish(); // Close the login activity
+    }
+
 
     private void navigateToHome() {
         // After successful login, navigate to Main activity

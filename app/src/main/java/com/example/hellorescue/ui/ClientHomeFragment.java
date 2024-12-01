@@ -30,7 +30,7 @@ public class ClientHomeFragment extends Fragment {
     // Dropdown items for fire types
     String[] items_mdr = {"Mdr","Industrial Fires", "Residential Fires", "Forest and Grassland Fires", "Vehicle Fires", "Fireworks-Related Fires"};
     // Dropdown items for fire types
-    String[] items_police = {"Vehicular Accident", "Domestic Violence ", "Trouble Alarm", "Robbery Alarm", "Shooting"};
+    String[] items_police = {"Vehicular Accident", "Domestic Violence ", "Trouble Alarm", "Robbery Alarm", "Shooting Alarm"};
     // Dropdown items for fire types
     String[] items_fire = {"Fire","Industrial Fires", "Residential Fires", "Forest and Grassland Fires", "Vehicle Fires", "Fireworks-Related Fires"};
     // Dropdown items for sex

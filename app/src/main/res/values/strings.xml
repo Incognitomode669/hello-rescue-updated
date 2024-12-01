@@ -11,6 +11,9 @@
     <string name="title_hotline">Hotline</string>
     <string name="select">Type of Incident</string>
 
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
     <string name="content_home">This is the Home Screen</string>
     <string name="content_tips">I miss you :></string>
     <string name="content_notification">Can We Try Again 🥹</string>
