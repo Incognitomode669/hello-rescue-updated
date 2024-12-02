@@ -1,10 +1,13 @@
-package com.example.hellorescue.ui;
+package com.example.hellorescue.responderpolice;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -34,7 +37,7 @@ public class AdminPoliceActivity extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_police);
+        setContentView(R.layout.responder_police);
 
         // Initialize map view and toolbar
         mapView = findViewById(R.id.mapView_police);
@@ -48,6 +51,49 @@ public class AdminPoliceActivity extends AppCompatActivity implements OnMapReady
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ImageButton rescueAlertIcon = findViewById(R.id.rescue_alert_icon);
+        LinearLayout AccountInformation = findViewById(R.id.change_password_username_police);
+        LinearLayout UpdateHotline = findViewById(R.id.update_hotline_police);
+        LinearLayout History = findViewById(R.id.history_police);
+        LinearLayout HowToUse = findViewById(R.id.how_to_use_police);
+        LinearLayout About = findViewById(R.id.about_police);
+
+
+
+        rescueAlertIcon.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminPoliceActivity.this, RescueAlertPoliceFragment.class);
+            startActivity(intent);
+        });
+
+        AccountInformation.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminPoliceActivity.this, AccountInformationPoliceFragment.class);
+            startActivity(intent);
+        });
+
+        UpdateHotline.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminPoliceActivity.this, UpdateHotlinePoliceFragment.class);
+            startActivity(intent);
+        });
+
+        History.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminPoliceActivity.this, HistoryPoliceFragment.class);
+            startActivity(intent);
+        });
+
+
+        HowToUse.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminPoliceActivity.this, HowToUsePoliceFragment.class);
+            startActivity(intent);
+        });
+
+        About.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminPoliceActivity.this, AboutPoliceFragment.class);
+            startActivity(intent);
+        });
+
+
+
+
 
         Objects.requireNonNull(getSupportActionBar()).setTitle(null);
 
@@ -77,6 +123,9 @@ public class AdminPoliceActivity extends AppCompatActivity implements OnMapReady
 
         rescueTextView.setText(spannableString);
     }
+
+
+
 
 
     @Override

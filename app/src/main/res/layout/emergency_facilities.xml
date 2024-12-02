@@ -13,7 +13,7 @@
         android:background="@drawable/flag_transparent"
         android:contentDescription="back button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Rescue_Alert_Police_txt"
+        app:layout_constraintEnd_toStartOf="@+id/History_Police_txt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
 
 
     <TextView
-        android:id="@+id/Rescue_Alert_Police_txt"
+        android:id="@+id/History_Police_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inria_serif_bold"
@@ -46,7 +46,7 @@
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
         <ImageButton
             android:layout_width="wrap_content"

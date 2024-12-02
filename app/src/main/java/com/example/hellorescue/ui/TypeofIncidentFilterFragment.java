@@ -11,16 +11,15 @@ import androidx.fragment.app.Fragment;
 
 import com.example.hellorescue.R;
 
-public class TodayNotificationsFragment extends Fragment {
+public class TypeofIncidentFilterFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.today_notifications, container, false);
+        View view = inflater.inflate(R.layout.type_of_incident_filter_police, container, false);
         // Add your views and logic for today's notifications
         return view;
     }
 }
-

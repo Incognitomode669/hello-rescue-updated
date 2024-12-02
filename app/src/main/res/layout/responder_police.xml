@@ -7,7 +7,7 @@
     tools:openDrawer="start"
     android:background="@color/white"
     android:id="@+id/police_drawer"
-    tools:context=".ui.AdminPoliceActivity">
+    tools:context=".responderpolice.AdminPoliceActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageButton
                             android:layout_width="20dp"
@@ -221,7 +221,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageButton
                             android:layout_width="20dp"
@@ -277,7 +277,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageButton
                             android:layout_width="20dp"
@@ -333,7 +333,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageButton
                             android:layout_width="20dp"
@@ -393,7 +393,7 @@
                         android:textSize="14sp" />
 
                     <LinearLayout
-                        android:id="@+id/how_to_use"
+                        android:id="@+id/how_to_use_police"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -404,7 +404,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageButton
                             android:layout_width="20dp"
@@ -449,7 +449,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/about"
+                        android:id="@+id/about_police"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -460,7 +460,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageButton
                             android:layout_width="20dp"

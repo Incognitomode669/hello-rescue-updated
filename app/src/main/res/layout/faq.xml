@@ -35,5 +35,138 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.059" />
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="0dp"
+        android:overScrollMode="never"
+        android:paddingTop="0dp"
+        android:scrollbarThumbVertical="@drawable/custom_scrollbar_thumb"
+        android:scrollbarTrackVertical="@drawable/custom_scrollbar_track"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="2dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingBottom="80dp">
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt"
+                app:srcCompat="@drawable/faq"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:text="1. What is Hello Rescue (SOS) Application?"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="MissingConstraints"
+                tools:targetApi="p" />
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:text="The Hello Rescue (SOS) Application is a mobile app designed to quickly alert emergency responders, such as the police, fire department, barangay, and ambulance services, in case of emergencies. The app allows users to send their location and key information to ensure fast help."
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="MissingConstraints"
+                tools:targetApi="p" />
+
+            <TextView
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:text="2. How does the SOS feature work?"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="MissingConstraints"
+                tools:targetApi="p" />
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:text="When you request an emergency to a specific responders, an alert is sent to the appropriate emergency responders (police, fire, barangay, or ambulance) along with your current location and other relevant information."
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="MissingConstraints"
+                tools:targetApi="p" />
+
+            <TextView
+
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inika_bold"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:text="3. Who are the main rescuers in the Hello Rescue app?"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="MissingConstraints"
+                tools:targetApi="p" />
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/inika_regular"
+                android:justificationMode="inter_word"
+                android:lineHeight="20dp"
+                android:text="The main rescuers in Hello Rescue are the police, fire department, barangay, and ambulance services. Depending on the emergency you report, the app directs your alert to the appropriate service."
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                tools:ignore="MissingConstraints"
+                tools:targetApi="p" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

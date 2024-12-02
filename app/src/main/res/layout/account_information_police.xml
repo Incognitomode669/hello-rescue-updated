@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".responderpolice.RescueAlertPoliceFragment">
+    tools:context=".responderpolice.AccountInformationPoliceFragment">
 
 
 
     <ImageButton
-        android:id="@+id/rescue_alert_police_back"
+        android:id="@+id/account_information_police_back"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -23,29 +23,17 @@
         app:srcCompat="@drawable/arrow1" />
 
     <TextView
-        android:id="@+id/Rescue_Alert_Police_txt"
+        android:id="@+id/Account_Information_Police_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inria_serif_bold"
-        android:text="Rescue Alert"
+        android:text="Account Information"
         android:textColor="@color/black"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:layout_marginTop="@dimen/margin_60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/rescue_alert_police_filter"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/flag_transparent"
-        android:contentDescription="Filter Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/filter_responder_gif" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:elevation="4dp"
     android:gravity="center"
-    tools:context=".ui.AdminPoliceActivity">
+    tools:context=".responderpolice.AdminPoliceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -36,12 +36,11 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/rescue_alert_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
-
-            app:srcCompat="@drawable/notification_admin"
+            app:srcCompat="@drawable/notification_gif"
             tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

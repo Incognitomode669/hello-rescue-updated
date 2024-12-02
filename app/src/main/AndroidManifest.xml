@@ -88,8 +88,28 @@
         <activity android:name=".ServicesFragment"
             android:exported="true"/>
 
-        <activity android:name=".ui.AdminPoliceActivity"
+        <activity android:name=".responderpolice.AdminPoliceActivity"
             android:exported="true"/>
+
+        <activity android:name=".responderpolice.RescueAlertPoliceFragment"
+            android:exported="true"/>
+
+        <activity android:name=".responderpolice.AccountInformationPoliceFragment"
+            android:exported="true"/>
+
+        <activity android:name=".responderpolice.UpdateHotlinePoliceFragment"
+            android:exported="true"/>
+
+        <activity android:name=".responderpolice.HistoryPoliceFragment"
+            android:exported="true"/>
+
+        <activity android:name=".responderpolice.HowToUsePoliceFragment"
+            android:exported="true"/>
+
+        <activity android:name=".responderpolice.AboutPoliceFragment"
+            android:exported="true"/>
+
+
 
 
 

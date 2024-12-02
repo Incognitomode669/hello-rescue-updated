@@ -102,7 +102,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -210,7 +210,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -277,7 +277,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -331,7 +331,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                 <ImageButton
                     android:layout_width="wrap_content"
@@ -384,7 +384,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Rescue_Alert_Police_txt">
+                app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                 <ImageButton
                     android:layout_width="wrap_content"
