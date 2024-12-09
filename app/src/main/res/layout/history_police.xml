@@ -58,7 +58,7 @@
         android:id="@+id/filter_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:background="@drawable/police_responder_filter_bg"
         tools:ignore="MissingConstraints">
 
@@ -70,9 +70,9 @@
             android:layout_height="390dp"
             android:background="@drawable/filter_respoder_shape"
             android:padding="10dp"
-
+            android:translationY="2000dp"
             android:clickable="false"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent">
 
 
@@ -88,6 +88,32 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/drag_slide" />
+
+
+            <ImageButton
+                android:id="@+id/accident_line"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:background="@drawable/flag_transparent"
+                android:visibility="invisible"
+                android:clickable="false"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_accident_police"
+                app:layout_constraintStart_toStartOf="@+id/type_of_accident_police"
+                app:layout_constraintTop_toBottomOf="@+id/type_of_accident_police"
+                app:srcCompat="@drawable/type_of_accident_line" />
+
+
+            <ImageButton
+                android:id="@+id/date_line"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:background="@drawable/flag_transparent"
+                android:visibility="invisible"
+                android:clickable="false"
+                app:layout_constraintEnd_toEndOf="@+id/date_police"
+                app:layout_constraintStart_toStartOf="@+id/date_police"
+                app:layout_constraintTop_toBottomOf="@+id/date_police"
+                app:srcCompat="@drawable/date_line" />
 
 
 
