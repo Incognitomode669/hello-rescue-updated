@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="380dp"
         android:background="@drawable/filter_respoder_shape"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,9 +22,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inika_regular"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="Date Range" />
 
 
@@ -85,32 +85,32 @@
 
 
                     <RelativeLayout
-                        android:id="@+id/relativeLayout_mdr"
+                        android:id="@+id/relativeLayout_select_option"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_report_mdr">
+                        app:layout_constraintStart_toStartOf="parent">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/TextInputLayoutMdr_container"
+                            android:id="@+id/TextInputLayoutCustom_container"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Select Option"
+                            android:background="@color/white"
+                            app:hintEnabled="true"
                             app:hintTextColor="@color/black"
                             app:boxStrokeWidth="1.5dp"
                             app:boxStrokeColor="@android:color/black"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
                             <AutoCompleteTextView
-                                android:id="@+id/auto_complete_txt_mdr"
+                                android:id="@+id/auto_complete_txt_custom"
                                 android:layout_width="match_parent"
-                                android:layout_height="30dp"
+                                android:layout_height="40dp"
                                 android:textSize="14sp"
                                 android:padding="5dp"
                                 android:textColor="@color/black"
                                 android:fontFamily="@font/inika_regular"
-                                style="@style/DropdownWhiteBackground"
                                 android:popupBackground="@drawable/dropdown_round_background"
                                 android:inputType="none"/>
                         </com.google.android.material.textfield.TextInputLayout>
@@ -135,14 +135,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inika_regular"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="From" />
 
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -152,38 +152,39 @@
 
 
                     <RelativeLayout
-                    android:id="@+id/VehicularAccidentContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@drawable/date_filter_shape_bg"
-                    android:clickable="true"
-                    app:layout_constraintEnd_toEndOf="@+id/textView7"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-
-                    <LinearLayout
+                        android:id="@+id/start_date_container"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true">
+                        android:layout_height="40dp"
+                        android:background="@drawable/date_filter_shape_bg_not_custom"
+                        android:clickable="true"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
 
-                        <TextView
-                            android:id="@+id/vehicularAccidentIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
                             android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:fontFamily="@font/inika_regular"
-                            android:layout_marginStart="11dp"
-                            android:textColor="#949494"
-                            android:paddingStart="4.8dp"
-                            android:text="Select a start date"/>
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/start_date_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/inika_regular"
+                                android:layout_marginStart="11dp"
+                                android:layout_gravity="center"
+                                android:textColor="#949494"
+                                android:paddingStart="4.8dp"
+                                android:text="Select a start date"/>
 
 
-                    </LinearLayout>
+                        </LinearLayout>
 
 
 
@@ -191,7 +192,7 @@
 
 
                         <ImageButton
-
+                            android:id="@+id/start_date_button"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_alignParentEnd="true"
@@ -200,7 +201,7 @@
                             android:paddingEnd="15dp"
                             android:background="@drawable/flag_transparent"
                             app:srcCompat="@drawable/calendar_filter" />
-                </RelativeLayout>
+                    </RelativeLayout>
 
 
                 </LinearLayout>
@@ -221,14 +222,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/inika_regular"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:text="To" />
 
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -238,10 +239,10 @@
 
 
                     <RelativeLayout
-
+                        android:id="@+id/end_date_container"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:background="@drawable/date_filter_shape_bg"
+                        android:layout_height="40dp"
+                        android:background="@drawable/date_filter_shape_bg_not_custom"
                         android:clickable="true"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -250,19 +251,22 @@
 
 
                         <LinearLayout
+
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:orientation="horizontal"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true">
 
                             <TextView
+                                android:id="@+id/end_date_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
                                 android:fontFamily="@font/inika_regular"
                                 android:layout_marginStart="11dp"
+                                android:layout_gravity="center"
                                 android:textColor="#949494"
                                 android:paddingStart="4.8dp"
                                 android:text="Select an end  date"/>
@@ -276,7 +280,7 @@
 
 
                         <ImageButton
-
+                            android:id="@+id/end_date_button"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_alignParentEnd="true"

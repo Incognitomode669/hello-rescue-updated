@@ -72,7 +72,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/modal_fire"
             android:elevation="10dp"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -225,7 +225,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/modal_police"
             android:elevation="10dp"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -382,7 +382,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/modal_mdr"
             android:elevation="10dp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -428,11 +428,11 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/mr_info"
-                    app:layout_constraintBottom_toTopOf="@id/relativeLayout_mdr"
-                    app:layout_constraintEnd_toEndOf="@+id/relativeLayout_mdr" />
+                    app:layout_constraintBottom_toTopOf="@id/relativeLayout_select_option"
+                    app:layout_constraintEnd_toEndOf="@+id/relativeLayout_select_option" />
 
                 <RelativeLayout
-                    android:id="@+id/relativeLayout_mdr"
+                    android:id="@+id/relativeLayout_select_option"
                     android:layout_width="290dp"
                     android:layout_marginTop="5dp"
                     android:layout_height="wrap_content"
@@ -441,7 +441,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/text_report_mdr">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/TextInputLayoutMdr_container"
+                        android:id="@+id/TextInputLayoutCustom_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/select"
@@ -475,7 +475,7 @@
                     android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/relativeLayout_mdr" />
+                    app:layout_constraintTop_toBottomOf="@id/relativeLayout_select_option" />
 
                 <!-- New Name and Sex Layout -->
                 <LinearLayout

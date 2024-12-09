@@ -70,7 +70,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
 
-    implementation ("com.google.android.material:material:1.9.0")
 
 
     // Glide library
@@ -81,8 +80,7 @@ dependencies {
     implementation ("com.hbb20:ccp:2.5.1")
     implementation ("io.michaelrocks:libphonenumber-android:8.13.35")
 
-    //image view round corner
-    implementation ("com.google.android.material:material:1.9.0")
+
 
     //qr code scanner
     implementation ("com.github.yuriy-budiyev:code-scanner:2.3.0")
@@ -130,6 +128,11 @@ dependencies {
 
 
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
+
+
+    //image view round corner
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("com.google.android.material:material:1.13.0-alpha08")
 
 
 

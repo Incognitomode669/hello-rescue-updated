@@ -1,10 +1,17 @@
 package com.example.hellorescue.responderpolice;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.graphics.drawable.AnimatedImageDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +27,7 @@ public class HistoryPoliceFragment extends AppCompatActivity {
     private boolean isAnimationRunning = false; // prevent spam clicks
     private ViewPager2 viewPager2;
     private TextView typeOfAccidentTextView, dateTextView;
+    private boolean isFilterVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +40,113 @@ public class HistoryPoliceFragment extends AppCompatActivity {
 
         // Set up the filter button
         ImageButton filterButton = findViewById(R.id.police_history_filter);
-        filterButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.P) // AnimatedImageDrawable requires API 28+
-            @Override
-            public void onClick(View v) {
-                if (isAnimationRunning) {
-                    return; // Prevent starting another animation if already running
-                }
 
-                Drawable drawable = filterButton.getDrawable();
+
+
+        filterButton.setOnClickListener(v -> {
+            // Check if already running
+            if (isAnimationRunning) {
+                return; // Prevent multiple animations at the same time
+            }
+
+            // Disable the button immediately
+            filterButton.setEnabled(false);
+            backButton.setEnabled(false);
+
+            // Play the GIF animation
+            Drawable drawable = filterButton.getDrawable();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 if (drawable instanceof AnimatedImageDrawable) {
-                    AnimatedImageDrawable animatedGif = (AnimatedImageDrawable) drawable;
-                    isAnimationRunning = true;
-                    animatedGif.start();
-                    new Handler().postDelayed(() -> {
-                        animatedGif.stop();
-                        isAnimationRunning = false; // Reset the flag
-                    }, ANIMATION_DURATION_MS);
+                    AnimatedImageDrawable animatedDrawable = (AnimatedImageDrawable) drawable;
+                    animatedDrawable.start(); // Start the GIF animation
+
+                    // Stop the animation and re-enable button after 1 second
+                    new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                        if (animatedDrawable.isRunning()) {
+                            animatedDrawable.stop(); // Stop the animation
+                        }
+
+                        // Re-enable the button on the main thread
+                        runOnUiThread(() -> {
+                            filterButton.setEnabled(true);
+                            isAnimationRunning = false;
+                        });
+                    }, 1000);
                 }
             }
+
+            isAnimationRunning = true;
+
+            // Get the main container and filter container views
+            View mainContainer = findViewById(R.id.main_container);
+            View filterContainer = findViewById(R.id.filter_container);
+
+            if (!isFilterVisible) {
+                // Show filter (Slide Up and Fade In)
+                mainContainer.setTranslationY(2000f);
+                mainContainer.setVisibility(View.VISIBLE);
+
+                ObjectAnimator slideUp = ObjectAnimator.ofFloat(mainContainer, "translationY", 0f);
+                slideUp.setDuration(300);
+
+                filterContainer.setAlpha(0f);
+                filterContainer.setVisibility(View.VISIBLE);
+                ObjectAnimator fadeIn = ObjectAnimator.ofFloat(filterContainer, "alpha", 0f, 1f);
+                fadeIn.setDuration(300);
+
+                AnimatorSet showAnimatorSet = new AnimatorSet();
+                showAnimatorSet.playTogether(slideUp, fadeIn);
+                showAnimatorSet.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        isFilterVisible = true;
+                    }
+                });
+                showAnimatorSet.start();
+            } else {
+                // Hide filter (Slide Down and Fade Out)
+                ObjectAnimator slideDown = ObjectAnimator.ofFloat(mainContainer, "translationY", 2000f);
+                slideDown.setDuration(300);
+
+                ObjectAnimator fadeOut = ObjectAnimator.ofFloat(filterContainer, "alpha", 1f, 0f);
+                fadeOut.setDuration(300);
+
+                AnimatorSet hideAnimatorSet = new AnimatorSet();
+                hideAnimatorSet.playTogether(slideDown, fadeOut);
+                hideAnimatorSet.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        mainContainer.setVisibility(View.GONE);
+                        filterContainer.setVisibility(View.GONE);
+                        isFilterVisible = false;
+                    }
+                });
+                hideAnimatorSet.start();
+            }
         });
+
+
+
+        View mainParent = findViewById(R.id.main_parent);
+        mainParent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Check if the touch is outside the main_container
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    View mainContainer = findViewById(R.id.main_container);
+                    if (!isPointInsideView(mainContainer, event.getRawX(), event.getRawY())) {
+                        // Trigger slide down animation
+                        hideFilter(); // Call the method to hide the filter (slide down and fade out)
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
+
 
         // Initialize the ViewPager2 and set the adapter
         viewPager2 = findViewById(R.id.viewPager);
@@ -104,5 +199,42 @@ public class HistoryPoliceFragment extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // Helper method to check if the touch point is inside a view
+    private boolean isPointInsideView(View view, float x, float y) {
+        int[] location = new int[2];
+        view.getLocationOnScreen(location);
+        int left = location[0];
+        int top = location[1];
+        int right = left + view.getWidth();
+        int bottom = top + view.getHeight();
+
+        return x >= left && x <= right && y >= top && y <= bottom;
+    }
+
+    // Method to hide the filter (slide down and fade out)
+    private void hideFilter() {
+        // Check if the filter is visible, if so, slide it down and fade it out
+        View mainContainer = findViewById(R.id.main_container);
+        View filterContainer = findViewById(R.id.filter_container);
+
+        ObjectAnimator slideDown = ObjectAnimator.ofFloat(mainContainer, "translationY", 2000f);
+        slideDown.setDuration(300);
+
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(filterContainer, "alpha", 1f, 0f);
+        fadeOut.setDuration(300);
+
+        AnimatorSet hideAnimatorSet = new AnimatorSet();
+        hideAnimatorSet.playTogether(slideDown, fadeOut);
+        hideAnimatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mainContainer.setVisibility(View.GONE);
+                filterContainer.setVisibility(View.GONE);
+                isFilterVisible = false;
+            }
+        });
+        hideAnimatorSet.start();
     }
 }

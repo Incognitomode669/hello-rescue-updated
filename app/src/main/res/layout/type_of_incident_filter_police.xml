@@ -4,29 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/police_responder_filter_bg"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".responderpolice.TypeOfIncidentPoliceFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@drawable/filter_respoder_shape"
+        android:layout_height="380dp"
+        android:background="@color/white"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:ignore="MissingConstraints">
 
 
-        <!-- Type of Accident TextView aligned to center -->
 
-        <!-- Date TextView aligned to end -->
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:orientation="vertical"
-            android:paddingTop="15dp">
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -59,6 +58,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/incident_shape_bg"
                         android:clickable="true"
+                        android:padding="2dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -97,7 +97,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="start"
                 android:orientation="horizontal">
 
@@ -105,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -113,7 +113,9 @@
                         android:id="@+id/DomesticViolenceCheckbox"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:gravity="center"></CheckBox>
+                        android:gravity="center">
+
+                    </CheckBox>
 
 
                     <RelativeLayout
@@ -123,6 +125,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/incident_shape_bg"
                         android:clickable="true"
+                        android:padding="2dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -159,7 +162,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="start"
                 android:orientation="horizontal">
 
@@ -167,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -175,7 +178,9 @@
                         android:id="@+id/RobberyAlarmCheckbox"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:gravity="center"></CheckBox>
+                        android:gravity="center">
+
+                    </CheckBox>
 
 
                     <RelativeLayout
@@ -185,6 +190,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/incident_shape_bg"
                         android:clickable="true"
+                        android:padding="2dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -221,7 +227,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="start"
                 android:orientation="horizontal">
 
@@ -229,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -237,7 +243,9 @@
                         android:id="@+id/TroubleAlarmCheckbox"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:gravity="center"></CheckBox>
+                        android:gravity="center">
+
+                    </CheckBox>
 
 
                     <RelativeLayout
@@ -247,6 +255,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/incident_shape_bg"
                         android:clickable="true"
+                        android:padding="2dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -284,7 +293,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="start"
                 android:orientation="horizontal">
 
@@ -292,7 +301,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -300,7 +309,9 @@
                         android:id="@+id/ShootingAlarmCheckbox"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:gravity="center"></CheckBox>
+                        android:gravity="center">
+
+                    </CheckBox>
 
 
                     <RelativeLayout
@@ -310,6 +321,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/incident_shape_bg"
                         android:clickable="true"
+                        android:padding="2dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/textView7"
