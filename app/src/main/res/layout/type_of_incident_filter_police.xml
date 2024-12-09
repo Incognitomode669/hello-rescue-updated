@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/police_responder_filter_bg"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".responderpolice.TypeOfIncidentPoliceFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,10 +42,11 @@
                     android:orientation="horizontal">
 
                     <CheckBox
-                        android:id="@+id/vehicularAccidentCheckbox"
+                        android:id="@+id/VehicularAccidentCheckbox"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:gravity="center">
+
 
                     </CheckBox>
 
@@ -58,6 +58,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/incident_shape_bg"
                         android:clickable="true"
+                        android:focusable="true"
                         android:padding="2dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView7"
                         app:layout_constraintHorizontal_bias="0.0"

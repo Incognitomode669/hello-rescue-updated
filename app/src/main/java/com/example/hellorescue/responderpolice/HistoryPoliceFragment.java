@@ -10,17 +10,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.RequiresApi;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.hellorescue.R;
-import com.example.hellorescue.ui.HistoryPolicePagerAdapter;
 
 public class HistoryPoliceFragment extends AppCompatActivity {
     private static final int ANIMATION_DURATION_MS = 1000;

@@ -1,12 +1,8 @@
-package com.example.hellorescue.ui;
+package com.example.hellorescue.responderpolice;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

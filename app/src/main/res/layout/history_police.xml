@@ -58,7 +58,7 @@
         android:id="@+id/filter_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:background="@drawable/police_responder_filter_bg"
         tools:ignore="MissingConstraints">
 
@@ -67,14 +67,30 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_container"
             android:layout_width="match_parent"
-            android:layout_height="380dp"
+            android:layout_height="390dp"
             android:background="@drawable/filter_respoder_shape"
             android:padding="10dp"
-            android:elevation="10dp"
+
             android:clickable="false"
-            android:translationY="2000dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent">
+
+
+            <ImageButton
+                android:id="@+id/drag_slide"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@drawable/flag_transparent"
+                android:clickable="true"
+                android:layout_marginTop="5dp"
+                android:contentDescription="Filter Button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/drag_slide" />
+
+
+
 
 
             <TextView
@@ -82,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/inika_bold"
                 android:gravity="start"
                 android:elevation="10dp"
@@ -98,10 +114,9 @@
                 android:id="@+id/type_of_accident_police"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/inika_regular"
                 android:gravity="center"
-                android:elevation="10dp"
                 android:singleLine="true"
                 android:text="Type of Accident"
                 android:textColor="@android:color/black"
@@ -117,7 +132,7 @@
                 android:id="@+id/date_police"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/inika_regular"
                 android:gravity="end"

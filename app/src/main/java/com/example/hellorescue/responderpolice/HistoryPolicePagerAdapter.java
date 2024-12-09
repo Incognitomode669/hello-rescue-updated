@@ -1,10 +1,8 @@
-package com.example.hellorescue.ui;
+package com.example.hellorescue.responderpolice;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import com.example.hellorescue.responderpolice.HistoryPoliceFragment;
 
 public class HistoryPolicePagerAdapter extends FragmentStateAdapter {
 
