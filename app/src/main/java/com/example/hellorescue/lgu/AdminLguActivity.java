@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.hellorescue.R;
+
 import com.google.android.gms.maps.MapView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -51,6 +52,11 @@ public class AdminLguActivity extends AppCompatActivity{
 
         AccountInformation.setOnClickListener(v -> {
             Intent intent = new Intent(com.example.hellorescue.lgu.AdminLguActivity.this, AccountInformationLguFragment.class);
+            startActivity(intent);
+        });
+
+        AddResponder.setOnClickListener(v -> {
+            Intent intent = new Intent(com.example.hellorescue.lgu.AdminLguActivity.this, AddResponderLguFragment.class);
             startActivity(intent);
         });
 

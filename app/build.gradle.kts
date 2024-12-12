@@ -134,6 +134,8 @@ dependencies {
     implementation ("com.google.android.material:material:1.9.0")
     implementation ("com.google.android.material:material:1.13.0-alpha08")
 
+    implementation ("org.mindrot:jbcrypt:0.4")
+
 
 
 

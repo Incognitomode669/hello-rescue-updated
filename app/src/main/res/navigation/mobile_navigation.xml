@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_services"
-        android:name="com.example.hellorescue.ui.ServicesFragment"
+        android:name="com.example.hellorescue.client.ServicesFragment"
         android:label="@string/title_tips"
         tools:layout="@layout/fragment_services">
 
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/navigation_safetytips"
-        android:name="com.example.hellorescue.ui.SafetyTipsFragment"
+        android:name="com.example.hellorescue.client.SafetyTipsFragment"
         android:label="Safety Tips"
         tools:layout="@layout/fragment_safetytips" >
 
@@ -111,7 +111,7 @@
 
     <fragment
         android:id="@+id/navigation_flood"
-        android:name="com.example.hellorescue.ui.FloodFragment"
+        android:name="com.example.hellorescue.client.FloodFragment"
         android:label="Flood"
         tools:layout="@layout/flood">
 
@@ -147,26 +147,26 @@
 
     <fragment
         android:id="@+id/navigation_beforeFlood"
-        android:name="com.example.hellorescue.ui.BeforeFloodFragment"
+        android:name="com.example.hellorescue.client.BeforeFloodFragment"
         android:label="Before Flood"
         tools:layout="@layout/before_flood_content" />
 
     <fragment
         android:id="@+id/navigation_duringFlood"
-        android:name="com.example.hellorescue.ui.DuringFloodFragment"
+        android:name="com.example.hellorescue.client.DuringFloodFragment"
         android:label="During Flood"
         tools:layout="@layout/during_flood_content" />
 
     <fragment
         android:id="@+id/navigation_afterFlood"
-        android:name="com.example.hellorescue.ui.AfterFloodFragment"
+        android:name="com.example.hellorescue.client.AfterFloodFragment"
         android:label="After Flood"
         tools:layout="@layout/after_flood_content" />
 
 <!--    typhoon navigation-->
     <fragment
         android:id="@+id/navigation_typhoon"
-        android:name="com.example.hellorescue.ui.TyphoonFragment"
+        android:name="com.example.hellorescue.client.TyphoonFragment"
         android:label="Flood"
         tools:layout="@layout/typhoon" >
 
@@ -201,19 +201,19 @@
 
     <fragment
         android:id="@+id/navigation_beforeTyphoon"
-        android:name="com.example.hellorescue.ui.BeforeTyphoonFragment"
+        android:name="com.example.hellorescue.client.BeforeTyphoonFragment"
         android:label="Before Typhoon"
         tools:layout="@layout/before_typhoon_content" />
 
     <fragment
         android:id="@+id/navigation_duringTyphoon"
-        android:name="com.example.hellorescue.ui.DuringTyphoonFragment"
+        android:name="com.example.hellorescue.client.DuringTyphoonFragment"
         android:label="During Typhoon"
         tools:layout="@layout/during_typhoon_content" />
 
     <fragment
         android:id="@+id/navigation_afterTyphoon"
-        android:name="com.example.hellorescue.ui.AfterTyphoonFragment"
+        android:name="com.example.hellorescue.client.AfterTyphoonFragment"
         android:label="After Typhoon"
         tools:layout="@layout/after_typhoon_content" />
 
@@ -221,7 +221,7 @@
 <!--    landslide navigation-->
     <fragment
         android:id="@+id/navigation_landslide"
-        android:name="com.example.hellorescue.ui.LandslideFragment"
+        android:name="com.example.hellorescue.client.LandslideFragment"
         android:label="Landslide"
         tools:layout="@layout/landslide">
 
@@ -256,19 +256,19 @@
 
     <fragment
         android:id="@+id/navigation_beforeLandslide"
-        android:name="com.example.hellorescue.ui.BeforeLandslideFragment"
+        android:name="com.example.hellorescue.client.BeforeLandslideFragment"
         android:label="Before Landslide"
         tools:layout="@layout/before_landslide_content" />
 
     <fragment
         android:id="@+id/navigation_duringLandslide"
-        android:name="com.example.hellorescue.ui.DuringLandslideFragment"
+        android:name="com.example.hellorescue.client.DuringLandslideFragment"
         android:label="During Landslide"
         tools:layout="@layout/during_landslide_content" />
 
     <fragment
         android:id="@+id/navigation_afterLandslide"
-        android:name="com.example.hellorescue.ui.AfterLandslideFragment"
+        android:name="com.example.hellorescue.client.AfterLandslideFragment"
         android:label="After Landslide"
         tools:layout="@layout/after_landslide_content" />
 
@@ -276,7 +276,7 @@
 <!--    earthquake navigation-->
     <fragment
         android:id="@+id/navigation_earthquake"
-        android:name="com.example.hellorescue.ui.EarthquakeFragment"
+        android:name="com.example.hellorescue.client.EarthquakeFragment"
         android:label="Earthquake"
         tools:layout="@layout/earthquake">
 
@@ -313,19 +313,19 @@
 
     <fragment
         android:id="@+id/navigation_beforeEarthquake"
-        android:name="com.example.hellorescue.ui.BeforeEarthquakeFragment"
+        android:name="com.example.hellorescue.client.BeforeEarthquakeFragment"
         android:label="Before Earthquake"
         tools:layout="@layout/before_earthquake_content" />
 
     <fragment
         android:id="@+id/navigation_duringEarthquake"
-        android:name="com.example.hellorescue.ui.DuringEarthquakeFragment"
+        android:name="com.example.hellorescue.client.DuringEarthquakeFragment"
         android:label="During Earthquake"
         tools:layout="@layout/during_earthquake_content" />
 
     <fragment
         android:id="@+id/navigation_afterEarthquake"
-        android:name="com.example.hellorescue.ui.AfterEarthquakeFragment"
+        android:name="com.example.hellorescue.client.AfterEarthquakeFragment"
         android:label="After Earthquake"
         tools:layout="@layout/after_earthquake_content" />
 
@@ -334,7 +334,7 @@
 <!--    heart attack navigation-->
     <fragment
         android:id="@+id/navigation_heartattack"
-        android:name="com.example.hellorescue.ui.HeartAttackFragment"
+        android:name="com.example.hellorescue.client.HeartAttackFragment"
         android:label="Heart Attack"
         tools:layout="@layout/heartattack">
 
@@ -371,19 +371,19 @@
 
     <fragment
         android:id="@+id/navigation_beforeHeartAttack"
-        android:name="com.example.hellorescue.ui.BeforeHeartAttackFragment"
+        android:name="com.example.hellorescue.client.BeforeHeartAttackFragment"
         android:label="Before Heart Attack"
         tools:layout="@layout/before_heartattack_content" />
 
     <fragment
         android:id="@+id/navigation_duringHeartAttack"
-        android:name="com.example.hellorescue.ui.DuringHeartAttackFragment"
+        android:name="com.example.hellorescue.client.DuringHeartAttackFragment"
         android:label="Before Heart Attack"
         tools:layout="@layout/during_heartattack_content" />
 
     <fragment
         android:id="@+id/navigation_afterHeartAttack"
-        android:name="com.example.hellorescue.ui.AfterHeartAttackFragment"
+        android:name="com.example.hellorescue.client.AfterHeartAttackFragment"
         android:label="Before Heart Attack"
         tools:layout="@layout/after_heartattack_content" />
 
@@ -391,7 +391,7 @@
 <!--    poisonous contamination navigation-->
     <fragment
         android:id="@+id/navigation_poisonouscontamination"
-        android:name="com.example.hellorescue.ui.PoisonousContaminationFragment"
+        android:name="com.example.hellorescue.client.PoisonousContaminationFragment"
         android:label="Poison Contamination"
         tools:layout="@layout/poisoncontamination">
 
@@ -429,19 +429,19 @@
 
     <fragment
         android:id="@+id/navigation_beforePoisonousContamination"
-        android:name="com.example.hellorescue.ui.BeforePoisonousContaminationFragment"
+        android:name="com.example.hellorescue.client.BeforePoisonousContaminationFragment"
         android:label="Before Poison Contamination"
         tools:layout="@layout/before_poisonouscontamination_content" />
 
     <fragment
         android:id="@+id/navigation_duringPoisonousContamination"
-        android:name="com.example.hellorescue.ui.DuringPoisonousContaminationFragment"
+        android:name="com.example.hellorescue.client.DuringPoisonousContaminationFragment"
         android:label="During Poison Contamination"
         tools:layout="@layout/during_poisonouscontamination_content" />
 
     <fragment
         android:id="@+id/navigation_afterPoisonousContamination"
-        android:name="com.example.hellorescue.ui.AfterPoisonousContaminationFragment"
+        android:name="com.example.hellorescue.client.AfterPoisonousContaminationFragment"
         android:label="After Poison Contamination"
         tools:layout="@layout/after_poisonouscontamination_content" />
 
@@ -451,7 +451,7 @@
 <!--    injury navigation-->
     <fragment
         android:id="@+id/navigation_injury"
-        android:name="com.example.hellorescue.ui.InjuryFragment"
+        android:name="com.example.hellorescue.client.InjuryFragment"
         android:label="Injury"
         tools:layout="@layout/injury">
 
@@ -488,19 +488,19 @@
 
     <fragment
         android:id="@+id/navigation_beforeInjury"
-        android:name="com.example.hellorescue.ui.BeforeInjuryFragment"
+        android:name="com.example.hellorescue.client.BeforeInjuryFragment"
         android:label="Before Injury"
         tools:layout="@layout/before_injury_content" />
 
     <fragment
         android:id="@+id/navigation_duringInjury"
-        android:name="com.example.hellorescue.ui.DuringInjuryFragment"
+        android:name="com.example.hellorescue.client.DuringInjuryFragment"
         android:label="During Injury"
         tools:layout="@layout/during_injury_content" />
 
     <fragment
         android:id="@+id/navigation_afterInjury"
-        android:name="com.example.hellorescue.ui.AfterInjuryFragment"
+        android:name="com.example.hellorescue.client.AfterInjuryFragment"
         android:label="After Injury"
         tools:layout="@layout/after_injury_content" />
 
@@ -510,7 +510,7 @@
 
     <fragment
         android:id="@+id/navigation_facilites"
-        android:name="com.example.hellorescue.ui.FacilitiesFragment"
+        android:name="com.example.hellorescue.client.FacilitiesFragment"
         android:label="Safety Tips"
         tools:layout="@layout/emergency_facilities">
 
@@ -530,14 +530,14 @@
 
     <fragment
         android:id="@+id/navigation_PoliceStation"
-        android:name="com.example.hellorescue.ui.PoliceStationFragment"
+        android:name="com.example.hellorescue.client.PoliceStationFragment"
         android:label="Police Station"
         tools:layout="@layout/police_station" />
 
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.hellorescue.ui.ProfileFragment"
+        android:name="com.example.hellorescue.client.ProfileFragment"
         android:label="@string/title_profile">
 
 <!--        <action-->
@@ -575,14 +575,14 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.hellorescue.ui.ClientHomeFragment"
+        android:name="com.example.hellorescue.client.ClientHomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home"
         />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.hellorescue.ui.NotificationsFragment"
+        android:name="com.example.hellorescue.client.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notification" />
 

@@ -167,12 +167,12 @@ public class MainActivity extends AppCompatActivity {
     private void navigateToResponderDashboard(String role) {
         Intent intent;
         switch (role) {
-            case "Police":
+            case "POLICE":
                 intent = new Intent(MainActivity.this, AdminLguActivity.class);
                 break;
-//            case "Fire":
-//                intent = new Intent(MainActivity.this, FireActivity.class);
-//                break;
+            case "BFP":
+                intent = new Intent(MainActivity.this, AdminPoliceActivity.class);
+                break;
 //            case "MDRRMO":
 //                intent = new Intent(MainActivity.this, MDRRMOActivity.class);
 //                break;
