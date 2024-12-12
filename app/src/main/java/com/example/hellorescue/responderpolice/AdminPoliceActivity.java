@@ -47,12 +47,12 @@ public class AdminPoliceActivity extends AppCompatActivity implements OnMapReady
         }
 
         navigationView = findViewById(R.id.navview);
-        drawerLayout = findViewById(R.id.police_drawer);
+        drawerLayout = findViewById(R.id.lgu_drawer);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar_lgu);
         setSupportActionBar(toolbar);
         ImageButton rescueAlertIcon = findViewById(R.id.rescue_alert_icon);
-        LinearLayout AccountInformation = findViewById(R.id.change_password_username_police);
+        LinearLayout AccountInformation = findViewById(R.id.change_password_username_lgu);
         LinearLayout UpdateHotline = findViewById(R.id.update_hotline_police);
         LinearLayout History = findViewById(R.id.history_police);
         LinearLayout HowToUse = findViewById(R.id.how_to_use_police);

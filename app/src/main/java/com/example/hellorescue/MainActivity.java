@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hellorescue.lgu.AdminLguActivity;
 import com.example.hellorescue.responderpolice.AdminPoliceActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         switch (role) {
             case "Police":
-                intent = new Intent(MainActivity.this, AdminPoliceActivity.class);
+                intent = new Intent(MainActivity.this, AdminLguActivity.class);
                 break;
 //            case "Fire":
 //                intent = new Intent(MainActivity.this, FireActivity.class);

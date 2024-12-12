@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start"
-    android:background="@color/white"
+    android:background="@drawable/flag_transparent"
     android:id="@+id/lgu_drawer"
     tools:context=".responderpolice.AdminPoliceActivity">
 
@@ -17,16 +17,10 @@
 
         <include
             android:id="@+id/toolbar_lgu"
-            layout="@layout/toolbar_police_responder"
+            layout="@layout/toolbar_lgu_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView_police"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="5dp"
-            android:layout_below="@id/toolbar_lgu" />
 
     </RelativeLayout>
 
@@ -39,8 +33,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:background="@drawable/police_admin_bg">
+            android:layout_height="245dp"
+            android:layout_marginTop="23dp"
+            android:background="@drawable/lgu_banner">
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -50,7 +45,7 @@
             android:orientation="vertical"
             android:paddingTop="20dp">
 
-            <!-- PNP Container -->
+            <!-- LGU Container -->
             <LinearLayout
                 android:id="@+id/lgu_container"
                 android:layout_width="match_parent"
@@ -67,24 +62,17 @@
                     android:layout_gravity="top"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:fontFamily="@font/inika_regular"
-                        android:text="PHILIPPINE NATIONALPOLICE"
-                        android:textColor="@color/black"
-                        android:textSize="19sp" />
+
 
                     <ImageView
                         android:id="@+id/ProfileImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:padding="15dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/police_bg"
+                        android:layout_marginTop="50dp"
+                        android:background="@drawable/lgu_bg"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/police_bg_icon"
+                        android:src="@drawable/lgu_icon"
                         android:adjustViewBounds="true"
                         android:clipToOutline="true" />
 
@@ -100,8 +88,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:fontFamily="@font/inika_regular"
-                            android:text="Responder"
-                            android:textColor="@color/black"
+                            android:text="Admin"
+                            android:textColor="@color/white"
                             android:layout_marginEnd="5dp"
                             android:textSize="15sp" />
 
@@ -168,14 +156,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:scaleType="centerCrop"
+                            android:layout_marginStart="5dp"
                             android:background="@android:color/transparent"
                             android:contentDescription="Icon button"
-                            app:srcCompat="@drawable/profile_information_icon" />
+                            android:scaleType="centerCrop"
+                            app:srcCompat="@drawable/account_information_icon" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -210,7 +198,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/update_hotline_police"
+                        android:id="@+id/add_responder"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -231,7 +219,7 @@
                             android:scaleType="centerCrop"
                             android:background="@android:color/transparent"
                             android:contentDescription="Icon button"
-                            app:srcCompat="@drawable/update_hotline" />
+                            app:srcCompat="@drawable/add_responder_icon" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -246,7 +234,7 @@
                                 android:layout_gravity="start"
                                 android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
-                                android:text="Update Hotline"
+                                android:text="Add Responder"
                                 android:textColor="@color/black"
                                 android:textSize="13sp" />
 
@@ -266,63 +254,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/history_police"
-                        android:layout_width="230dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/profile_shape2"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:clickable="true"
-                        android:padding="10dp"
-                        android:layout_gravity="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
-
-                        <ImageButton
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="Icon button"
-                            app:srcCompat="@drawable/history_icon" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="start"
-                                android:padding="2dp"
-                                android:fontFamily="@font/inika_regular"
-                                android:text="History"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="start"
-                                android:padding="2dp"
-                                android:fontFamily="@font/inika_regular"
-                                android:text="Recent rescue activities."
-                                android:textColor="@color/black"
-                                android:textSize="8sp" />
-
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/sign_out_police"
+                        android:id="@+id/sign_out_lgu"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -369,133 +301,6 @@
                                 android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
                                 android:text="Sign out. Stay safe, help is near."
-                                android:textColor="@color/black"
-                                android:textSize="8sp" />
-
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inika_regular"
-                        android:justificationMode="inter_word"
-                        android:lineSpacingExtra="2dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginTop="15dp"
-                        android:text="Support"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-
-                    <LinearLayout
-                        android:id="@+id/how_to_use_police"
-                        android:layout_width="230dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/profile_shape2"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:padding="10dp"
-                        android:clickable="true"
-                        android:layout_gravity="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="Icon button"
-                            app:srcCompat="@drawable/how_to_use_icon" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="start"
-                                android:padding="2dp"
-                                android:fontFamily="@font/inika_regular"
-                                android:text="How to use Hello Rescue"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="start"
-                                android:padding="2dp"
-                                android:fontFamily="@font/inika_regular"
-                                android:text="Learn more about how application works."
-                                android:textColor="@color/black"
-                                android:textSize="8sp" />
-
-
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/about_police"
-                        android:layout_width="230dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/profile_shape2"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:padding="10dp"
-                        android:clickable="true"
-                        android:layout_gravity="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="Icon button"
-                            app:srcCompat="@drawable/about_icon" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="start"
-                                android:padding="2dp"
-                                android:fontFamily="@font/inika_regular"
-                                android:text="About"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="start"
-                                android:padding="2dp"
-                                android:fontFamily="@font/inika_regular"
-                                android:text="Learn more about us."
                                 android:textColor="@color/black"
                                 android:textSize="8sp" />
 

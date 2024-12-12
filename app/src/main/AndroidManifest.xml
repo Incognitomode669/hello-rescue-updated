@@ -110,6 +110,13 @@
             android:exported="true"/>
 
 
+        <activity android:name=".lgu.AdminLguActivity"
+            android:exported="true"/>
+
+        <activity android:name=".lgu.AccountInformationLguFragment"
+            android:exported="true"/>
+
+
 
 
 
