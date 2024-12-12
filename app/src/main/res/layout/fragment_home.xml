@@ -71,10 +71,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/modal_fire"
-            android:elevation="10dp"
-            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            android:visibility="visible">
 
             <View
                 android:id="@+id/view_fire_modal"
@@ -124,31 +124,31 @@
                 <RelativeLayout
                     android:id="@+id/relativeLayout_fire"
                     android:layout_width="290dp"
-                    android:layout_marginTop="5dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_report_fire">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/TextInputLayoutFire_container"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/select"
-                        app:hintTextColor="@color/black"
-                        app:boxStrokeWidth="2dp"
                         app:boxStrokeColor="@android:color/black"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                        app:boxStrokeWidth="2dp"
+                        app:hintTextColor="@color/black">
 
                         <AutoCompleteTextView
                             android:id="@+id/auto_complete_txt_fire"
+                            style="@style/DropdownWhiteBackground"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:fontFamily="@font/inika_regular"
-                            style="@style/DropdownWhiteBackground"
+                            android:inputType="none"
                             android:popupBackground="@drawable/dropdown_round_background"
-                            android:inputType="none"/>
+                            android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
 

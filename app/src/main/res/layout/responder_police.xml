@@ -190,9 +190,9 @@
                                 android:layout_gravity="start"
                                 android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
-                                android:text="Account Information"
+                                android:text="Change Username/Password"
                                 android:textColor="@color/black"
-                                android:textSize="13sp" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -360,7 +360,7 @@
                                 android:fontFamily="@font/inika_regular"
                                 android:text="Sign out"
                                 android:textColor="@color/black"
-                                android:textSize="14sp" />
+                                android:textSize="13sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"

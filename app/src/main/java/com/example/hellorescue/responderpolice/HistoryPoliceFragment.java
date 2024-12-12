@@ -12,6 +12,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +30,14 @@ public class HistoryPoliceFragment extends AppCompatActivity {
     private TextView typeOfAccidentTextView, dateTextView;
     private boolean isFilterVisible = false;
 
+    // Drag slide variables
+    private View dragSlide;
+    private View mainContainer;
+    private View filterContainer;
+    private float initialTouchY;
+    private float dragThreshold;
+    private boolean isDragging = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +50,65 @@ public class HistoryPoliceFragment extends AppCompatActivity {
         // Set up the filter button
         ImageButton filterButton = findViewById(R.id.police_history_filter);
 
+        // Initialize drag slide elements
+        dragSlide = findViewById(R.id.drag_slide);
+        mainContainer = findViewById(R.id.main_container);
+        filterContainer = findViewById(R.id.filter_container);
 
+        // Calculate drag threshold (10% of screen height)
+        dragThreshold = getResources().getDisplayMetrics().heightPixels * 0.1f;
+
+        // Set up drag slide touch listener
+        dragSlide.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Store initial touch position
+                        initialTouchY = event.getRawY();
+                        isDragging = false;
+                        return true;
+
+                    case MotionEvent.ACTION_MOVE:
+                        // Calculate the distance moved
+                        float currentY = event.getRawY();
+                        float deltaY = currentY - initialTouchY;
+
+                        // Only start dragging if moved beyond touch slop
+                        if (Math.abs(deltaY) > ViewConfiguration.get(HistoryPoliceFragment.this).getScaledTouchSlop()) {
+                            isDragging = true;
+                        }
+
+                        // If dragging, move the container
+                        if (isDragging && isFilterVisible) {
+                            // Ensure we're only moving downwards
+                            if (deltaY > 0) {
+                                mainContainer.setTranslationY(deltaY);
+                                filterContainer.setAlpha(1 - (deltaY / mainContainer.getHeight()));
+                            }
+                        }
+                        return true;
+
+                    case MotionEvent.ACTION_UP:
+                        if (isDragging && isFilterVisible) {
+                            float finalY = event.getRawY();
+                            float totalDragDistance = finalY - initialTouchY;
+
+                            // Determine if we should close the filter based on drag distance
+                            if (totalDragDistance > dragThreshold) {
+                                // Close the filter
+                                closeFilter();
+                            } else {
+                                // Snap back to original position
+                                resetFilterPosition();
+                            }
+                            return true;
+                        }
+                        return false;
+                }
+                return false;
+            }
+        });
 
         filterButton.setOnClickListener(v -> {
             // Check if already running
@@ -75,10 +144,6 @@ public class HistoryPoliceFragment extends AppCompatActivity {
 
             isAnimationRunning = true;
 
-            // Get the main container and filter container views
-            View mainContainer = findViewById(R.id.main_container);
-            View filterContainer = findViewById(R.id.filter_container);
-
             if (!isFilterVisible) {
                 // Show filter (Slide Up and Fade In)
                 mainContainer.setTranslationY(2000f);
@@ -98,32 +163,15 @@ public class HistoryPoliceFragment extends AppCompatActivity {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         isFilterVisible = true;
+                        backButton.setEnabled(false);
                     }
                 });
                 showAnimatorSet.start();
             } else {
-                // Hide filter (Slide Down and Fade Out)
-                ObjectAnimator slideDown = ObjectAnimator.ofFloat(mainContainer, "translationY", 2000f);
-                slideDown.setDuration(300);
-
-                ObjectAnimator fadeOut = ObjectAnimator.ofFloat(filterContainer, "alpha", 1f, 0f);
-                fadeOut.setDuration(300);
-
-                AnimatorSet hideAnimatorSet = new AnimatorSet();
-                hideAnimatorSet.playTogether(slideDown, fadeOut);
-                hideAnimatorSet.addListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        mainContainer.setVisibility(View.GONE);
-                        filterContainer.setVisibility(View.GONE);
-                        isFilterVisible = false;
-                    }
-                });
-                hideAnimatorSet.start();
+                closeFilter();
+                backButton.setEnabled(true);
             }
         });
-
-
 
         View mainParent = findViewById(R.id.main_parent);
         mainParent.setOnTouchListener(new View.OnTouchListener() {
@@ -134,17 +182,14 @@ public class HistoryPoliceFragment extends AppCompatActivity {
                     View mainContainer = findViewById(R.id.main_container);
                     if (!isPointInsideView(mainContainer, event.getRawX(), event.getRawY())) {
                         // Trigger slide down animation
-                        hideFilter(); // Call the method to hide the filter (slide down and fade out)
+                        closeFilter();
+                        backButton.setEnabled(true);
                         return true;
                     }
                 }
                 return false;
             }
         });
-
-
-
-
 
         // Initialize the ViewPager2 and set the adapter
         viewPager2 = findViewById(R.id.viewPager);
@@ -154,25 +199,50 @@ public class HistoryPoliceFragment extends AppCompatActivity {
         // Initialize TextViews
         typeOfAccidentTextView = findViewById(R.id.type_of_accident_police);
         dateTextView = findViewById(R.id.date_police);
+        ImageButton accidentLine = findViewById(R.id.accident_line);
+        ImageButton dateLine = findViewById(R.id.date_line);
 
         // Set the default color to black and highlight the default selected TextView
         typeOfAccidentTextView.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         dateTextView.setTextColor(getResources().getColor(android.R.color.black));
+        accidentLine.setVisibility(View.VISIBLE);
 
         // Set the ViewPager to show the "Type of Accident" fragment (position 0) by default
         viewPager2.setCurrentItem(0);
 
         // Add listeners to navigate between fragments based on the TextView clicks
         typeOfAccidentTextView.setOnClickListener(v -> {
-            // Set the ViewPager to the "Type of Accident" fragment (position 0)
+            accidentLine.setVisibility(View.VISIBLE);
+
+            // Reset scale to initial state
+            accidentLine.setScaleX(0f);
+
+            // Animate the line to full width
+            accidentLine.animate()
+                    .scaleX(1f)
+                    .setDuration(300)
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .start();
+
+            // Change text color and ViewPager
             viewPager2.setCurrentItem(0);
-            // Change text color to red for selected TextView
             typeOfAccidentTextView.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-            // Reset the other TextView color to black
             dateTextView.setTextColor(getResources().getColor(android.R.color.black));
         });
 
         dateTextView.setOnClickListener(v -> {
+            dateLine.setVisibility(View.VISIBLE);
+
+            // Reset scale to initial state
+            dateLine.setScaleX(0f);
+
+            // Animate the line to full width
+            dateLine.animate()
+                    .scaleX(1f)
+                    .setDuration(300)
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .start();
+
             // Set the ViewPager to the "Date" fragment (position 1)
             viewPager2.setCurrentItem(1);
             // Change text color to red for selected TextView
@@ -186,15 +256,34 @@ public class HistoryPoliceFragment extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
-                if (position == 0) {
-                    // "Type of Accident" selected
-                    typeOfAccidentTextView.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    dateTextView.setTextColor(getResources().getColor(android.R.color.black));
-                } else if (position == 1) {
-                    // "Date" selected
-                    dateTextView.setTextColor(getResources().getColor(android.R.color.holo_red_light));
-                    typeOfAccidentTextView.setTextColor(getResources().getColor(android.R.color.black));
-                }
+
+                boolean isFirstPage = (position == 0);
+                View activeLineView = isFirstPage ? accidentLine : dateLine;
+                View inactiveLineView = isFirstPage ? dateLine : accidentLine;
+
+                TextView activeTextView = isFirstPage ? typeOfAccidentTextView : dateTextView;
+                TextView inactiveTextView = isFirstPage ? dateTextView : typeOfAccidentTextView;
+
+                // Animate active line in
+                activeLineView.setVisibility(View.VISIBLE);
+                activeLineView.setScaleX(0f);
+                activeLineView.animate()
+                        .scaleX(1f)
+                        .setDuration(300)
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .start();
+
+                // Animate inactive line out
+                inactiveLineView.animate()
+                        .scaleX(0f)
+                        .setDuration(300)
+                        .setInterpolator(new AccelerateDecelerateInterpolator())
+                        .withEndAction(() -> inactiveLineView.setVisibility(View.INVISIBLE))
+                        .start();
+
+                // Update text colors
+                activeTextView.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+                inactiveTextView.setTextColor(getResources().getColor(android.R.color.black));
             }
         });
     }
@@ -211,16 +300,15 @@ public class HistoryPoliceFragment extends AppCompatActivity {
         return x >= left && x <= right && y >= top && y <= bottom;
     }
 
-    // Method to hide the filter (slide down and fade out)
-    private void hideFilter() {
-        // Check if the filter is visible, if so, slide it down and fade it out
-        View mainContainer = findViewById(R.id.main_container);
-        View filterContainer = findViewById(R.id.filter_container);
+    // Method to close the filter with animation
+    private void closeFilter() {
+        if (!isFilterVisible) return;
 
-        ObjectAnimator slideDown = ObjectAnimator.ofFloat(mainContainer, "translationY", 2000f);
+        ObjectAnimator slideDown = ObjectAnimator.ofFloat(mainContainer, "translationY", mainContainer.getHeight());
         slideDown.setDuration(300);
+        slideDown.setInterpolator(new DecelerateInterpolator());
 
-        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(filterContainer, "alpha", 1f, 0f);
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(filterContainer, "alpha", 0f);
         fadeOut.setDuration(300);
 
         AnimatorSet hideAnimatorSet = new AnimatorSet();
@@ -234,5 +322,19 @@ public class HistoryPoliceFragment extends AppCompatActivity {
             }
         });
         hideAnimatorSet.start();
+    }
+
+    // Method to reset filter position if drag is not sufficient
+    private void resetFilterPosition() {
+        ObjectAnimator resetTranslation = ObjectAnimator.ofFloat(mainContainer, "translationY", 0f);
+        resetTranslation.setDuration(200);
+        resetTranslation.setInterpolator(new DecelerateInterpolator());
+
+        ObjectAnimator resetAlpha = ObjectAnimator.ofFloat(filterContainer, "alpha", 1f);
+        resetAlpha.setDuration(200);
+
+        AnimatorSet resetAnimatorSet = new AnimatorSet();
+        resetAnimatorSet.playTogether(resetTranslation, resetAlpha);
+        resetAnimatorSet.start();
     }
 }

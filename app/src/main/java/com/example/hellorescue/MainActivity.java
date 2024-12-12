@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -22,6 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText usernameEditText, passwordEditText;
     private Button loginButton, createAccountButton;
     private DatabaseReference usersDatabase;
+    private DatabaseReference responderDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
-        // Initialize Firebase database reference
+        // Initialize Firebase database references
         usersDatabase = FirebaseDatabase.getInstance().getReference("users");
+        responderDatabase = FirebaseDatabase.getInstance().getReference("Responders");
 
         usernameEditText = findViewById(R.id.login_email);
         passwordEditText = findViewById(R.id.login_pass);
@@ -75,47 +81,110 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkLoginCredentials(String username, String password) {
-        // Check for police credentials first
-        if (username.equals("police") && password.equals("police")) {
-            // Successful police login, redirect to AdminPoliceActivity
-            navigateToAdminPolice();
-        } else {
-            // Check Firebase for other user credentials
-            usersDatabase.orderByChild("username").equalTo(username)
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists()) {
-                                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                                    String storedPassword = userSnapshot.child("password").getValue(String.class);
-                                    if (storedPassword != null && storedPassword.equals(password)) {
-                                        // Successful login for other users
-                                        navigateToHome();
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            } else {
-                                Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+    // Secure password hashing method
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes());
+            byte[] digest = md.digest();
+            return Base64.encodeToString(digest, Base64.NO_WRAP);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
-    private void navigateToAdminPolice() {
-        // After successful police login, navigate to AdminPoliceActivity
-        Intent intent = new Intent(MainActivity.this, AdminPoliceActivity.class);
-        startActivity(intent);
-        finish(); // Close the login activity
+    private void checkLoginCredentials(String username, String password) {
+        // Hash the input password
+        String hashedPassword = hashPassword(password);
+
+        // Check Responders first
+        responderDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot responderSnapshot) {
+                boolean responderFound = false;
+
+                // Iterate through all responder roles
+                for (DataSnapshot roleSnapshot : responderSnapshot.getChildren()) {
+                    for (DataSnapshot userSnapshot : roleSnapshot.getChildren()) {
+                        String storedUsername = userSnapshot.child("username").getValue(String.class);
+                        String storedHashedPassword = userSnapshot.child("hashedPassword").getValue(String.class);
+                        String role = userSnapshot.child("role").getValue(String.class);
+
+                        if (username.equals(storedUsername) && hashedPassword.equals(storedHashedPassword)) {
+                            responderFound = true;
+                            navigateToResponderDashboard(role);
+                            return;
+                        }
+                    }
+                }
+
+                // If no responder found, check regular users
+                if (!responderFound) {
+                    checkRegularUserLogin(username, hashedPassword);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    private void checkRegularUserLogin(String username, String hashedPassword) {
+        usersDatabase.orderByChild("username").equalTo(username)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                                String storedPassword = userSnapshot.child("password").getValue(String.class);
+
+                                // For existing users, hash their current password
+                                String storedHashedPassword = hashPassword(storedPassword);
+
+                                if (hashedPassword.equals(storedHashedPassword)) {
+                                    // Successful login for regular users
+                                    navigateToHome();
+                                    return;
+                                }
+                            }
+                            Toast.makeText(MainActivity.this, "Invalid password", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "Username not found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void navigateToResponderDashboard(String role) {
+        Intent intent;
+        switch (role) {
+            case "Police":
+                intent = new Intent(MainActivity.this, AdminPoliceActivity.class);
+                break;
+//            case "Fire":
+//                intent = new Intent(MainActivity.this, FireActivity.class);
+//                break;
+//            case "MDRRMO":
+//                intent = new Intent(MainActivity.this, MDRRMOActivity.class);
+//                break;
+//            case "Barangay":
+//                intent = new Intent(MainActivity.this, BarangayActivity.class);
+//                break;
+            default:
+                Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show();
+                return;
+        }
+        startActivity(intent);
+        finish();
+    }
 
     private void navigateToHome() {
         // After successful login, navigate to Main activity

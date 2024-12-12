@@ -81,7 +81,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="10dp"
                 android:background="@drawable/flag_transparent"
-                android:clickable="true"
                 android:layout_marginTop="5dp"
                 android:contentDescription="Filter Button"
                 app:layout_constraintEnd_toEndOf="parent"
