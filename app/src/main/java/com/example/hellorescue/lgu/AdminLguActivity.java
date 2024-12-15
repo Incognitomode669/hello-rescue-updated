@@ -444,11 +444,12 @@ public class AdminLguActivity extends AppCompatActivity implements ResponderAdap
         showEditDialog(responder);
     }
 
+
     @Override
     public void onDeleteClick(Responder responder) {
         new AlertDialog.Builder(this)
                 .setTitle("Delete Responder")
-                .setMessage("Are you sure you wantonder?")
+                .setMessage("Are you sure you want to delete this responder?")
                 .setPositiveButton("Yes", (dialog, which) -> {
                     respondersRef.child(responder.getRole()).child(responder.getId()).removeValue()
                             .addOnSuccessListener(aVoid -> Toast.makeText(this, "Responder deleted", Toast.LENGTH_SHORT).show())
@@ -458,9 +459,12 @@ public class AdminLguActivity extends AppCompatActivity implements ResponderAdap
                 .show();
     }
 
+
+
+
     private void showEditDialog(Responder responder) {
         // TODO: Implement the edit dialog
-        // You can create a custom dialog or start a new activity for editing
+
         Toast.makeText(this, "Edit functionality to be implemented", Toast.LENGTH_SHORT).show();
     }
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class ResponderAdapter extends RecyclerView.Adapter<ResponderAdapter.Resp
     private List<Responder> filteredResponders;
     private Context context;
     private OnResponderClickListener listener;
+    private Animation clickAnimation;
 
     // Filtering flags
     private boolean showPolice = false;
@@ -32,6 +35,9 @@ public class ResponderAdapter extends RecyclerView.Adapter<ResponderAdapter.Resp
         this.listener = listener;
         this.allResponders = new ArrayList<>();
         this.filteredResponders = new ArrayList<>();
+
+        // Load the click animation
+        clickAnimation = AnimationUtils.loadAnimation(context, R.anim.button_scale);
     }
 
     public void setResponders(List<Responder> responders) {
@@ -110,6 +116,7 @@ public class ResponderAdapter extends RecyclerView.Adapter<ResponderAdapter.Resp
 
     public interface OnResponderClickListener {
         void onEditClick(Responder responder);
+
         void onDeleteClick(Responder responder);
     }
 
@@ -149,8 +156,47 @@ public class ResponderAdapter extends RecyclerView.Adapter<ResponderAdapter.Resp
                     break;
             }
 
-            editButton.setOnClickListener(v -> listener.onEditClick(responder));
-            deleteButton.setOnClickListener(v -> listener.onDeleteClick(responder));
+            editButton.setOnClickListener(v -> {
+                v.startAnimation(clickAnimation);
+                clickAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // Animation started
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // Animation ended, perform the edit action
+                        listener.onEditClick(responder);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // Animation repeated
+                    }
+                });
+            });
+
+            deleteButton.setOnClickListener(v -> {
+                v.startAnimation(clickAnimation);
+                clickAnimation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        // Animation started
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        // Animation ended, perform the delete action
+                        listener.onDeleteClick(responder);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+                        // Animation repeated
+                    }
+                });
+            });
         }
     }
 }
