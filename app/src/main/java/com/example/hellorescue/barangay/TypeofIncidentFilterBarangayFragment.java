@@ -1,4 +1,4 @@
-package com.example.hellorescue.responderpolice;
+package com.example.hellorescue.barangay;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.hellorescue.R;
 
-public class TypeofIncidentFilterFragment extends Fragment {
+public class TypeofIncidentFilterBarangayFragment extends Fragment {
 
     private static final String TAG = "TypeofIncidentFilter";
 
@@ -23,7 +23,7 @@ public class TypeofIncidentFilterFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.type_of_incident_filter_police, container, false);
+        View view = inflater.inflate(R.layout.type_of_incident_filter_barangay, container, false);
 
         View VehicularAccidentContainer = view.findViewById(R.id.VehicularAccidentContainer);
         CheckBox VehicularAccidentCheckbox = view.findViewById(R.id.VehicularAccidentCheckbox);
@@ -66,7 +66,7 @@ public class TypeofIncidentFilterFragment extends Fragment {
         VehicularAccidentIcon.setOnClickListener(toggleVehicleCheckboxListener);
 
 
-      
+
         View.OnClickListener toggleDomesticCheckboxListener = v -> {
             Log.d(TAG, "Clicked: " + v.getId());
 

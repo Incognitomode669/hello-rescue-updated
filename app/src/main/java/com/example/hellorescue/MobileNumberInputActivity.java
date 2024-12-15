@@ -295,8 +295,8 @@ public class MobileNumberInputActivity extends AppCompatActivity {
             // Store the mobile number in the database
             usersReference.child(userIdToDelete).child("mobileNumber").setValue(formattedMobileNumber)
                     .addOnSuccessListener(aVoid -> {
-                        // Mobile number stored successfully
-                        storeDefaultAddress();
+//                        // Mobile number stored successfully
+//                        storeDefaultAddress();
                         setUsernameAndPassword();
                     })
                     .addOnFailureListener(e -> {
@@ -307,15 +307,15 @@ public class MobileNumberInputActivity extends AppCompatActivity {
         }
     }
 
-    private void storeDefaultAddress() {
-        usersReference.child(userIdToDelete).child("address").setValue("Poblacion, Trinidad, Bohol, Philippines")
-                .addOnSuccessListener(aVoid -> {
-                    // Address stored successfully
-                })
-                .addOnFailureListener(e -> {
-                    // Handle the error
-                });
-    }
+//    private void storeDefaultAddress() {
+//        usersReference.child(userIdToDelete).child("address").setValue("Poblacion, Trinidad, Bohol, Philippines")
+//                .addOnSuccessListener(aVoid -> {
+//                    // Address stored successfully
+//                })
+//                .addOnFailureListener(e -> {
+//                    // Handle the error
+//                });
+//    }
 
     private void setUsernameAndPassword() {
         usersReference.child(userIdToDelete).addListenerForSingleValueEvent(new ValueEventListener() {

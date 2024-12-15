@@ -1,4 +1,4 @@
-package com.example.hellorescue.responderpolice;
+package com.example.hellorescue.barangay;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.hellorescue.R;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.MapView;
@@ -25,7 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-public class AdminPoliceActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class ResponderBarangayActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     // Declare variables for map and other UI components
     private MapView mapView;
@@ -37,59 +38,66 @@ public class AdminPoliceActivity extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.responder_police);
+        setContentView(R.layout.responder_barangay);
 
         // Initialize map view and toolbar
-        mapView = findViewById(R.id.mapView_police);
+        mapView = findViewById(R.id.mapView_barangay);
         if (mapView != null) {
             mapView.onCreate(savedInstanceState);
             mapView.getMapAsync(this);  // This will call onMapReady() once the map is ready
         }
 
         navigationView = findViewById(R.id.navview);
-        drawerLayout = findViewById(R.id.lgu_drawer);
+        drawerLayout = findViewById(R.id.barangay_drawer);
 
-        toolbar = findViewById(R.id.toolbar_lgu);
+        toolbar = findViewById(R.id.toolbar_barangay);
         setSupportActionBar(toolbar);
         ImageButton rescueAlertIcon = findViewById(R.id.rescue_alert_icon);
-        LinearLayout AccountInformation = findViewById(R.id.change_password_username_lgu);
-        LinearLayout UpdateHotline = findViewById(R.id.update_hotline_police);
-        LinearLayout History = findViewById(R.id.history_police);
-        LinearLayout HowToUse = findViewById(R.id.how_to_use_police);
-        LinearLayout About = findViewById(R.id.about_police);
+        LinearLayout AccountInformation = findViewById(R.id.change_password_username_barangay);
+        LinearLayout UpdateHotline = findViewById(R.id.update_hotline_barangay);
+        LinearLayout History = findViewById(R.id.history_barangay);
+        LinearLayout HowToUse = findViewById(R.id.how_to_use_barangay);
+        LinearLayout AddEligibleUser = findViewById(R.id.add_eligible_user);
+        LinearLayout About = findViewById(R.id.about_barangay);
 
 
 
         rescueAlertIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminPoliceActivity.this, RescueAlertPoliceFragment.class);
+            Intent intent = new Intent(ResponderBarangayActivity.this, RescueAlertBarangayFragment.class);
             startActivity(intent);
         });
-
+//
         AccountInformation.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminPoliceActivity.this, AccountInformationPoliceFragment.class);
+            Intent intent = new Intent(ResponderBarangayActivity.this, AccountInformationBarangayFragment.class);
             startActivity(intent);
         });
-
+//
         UpdateHotline.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminPoliceActivity.this, UpdateHotlinePoliceFragment.class);
+            Intent intent = new Intent(ResponderBarangayActivity.this, UpdateHotlineBarangayFragment.class);
             startActivity(intent);
         });
-
+//
         History.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminPoliceActivity.this, HistoryPoliceFragment.class);
+            Intent intent = new Intent(ResponderBarangayActivity.this, HistoryBarangayFragment.class);
+            startActivity(intent);
+        });
+//
+        AddEligibleUser.setOnClickListener(v -> {
+            Intent intent = new Intent(ResponderBarangayActivity.this, AddEligibleUserBarangayFragment.class);
             startActivity(intent);
         });
 
 
-        HowToUse.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminPoliceActivity.this, HowToUsePoliceFragment.class);
-            startActivity(intent);
-        });
-
-        About.setOnClickListener(v -> {
-            Intent intent = new Intent(AdminPoliceActivity.this, AboutPoliceFragment.class);
-            startActivity(intent);
-        });
+//
+//        HowToUse.setOnClickListener(v -> {
+//            Intent intent = new Intent(ResponderPoliceActivity.this, HowToUsePoliceFragment.class);
+//            startActivity(intent);
+//        });
+//
+//        About.setOnClickListener(v -> {
+//            Intent intent = new Intent(ResponderPoliceActivity.this, AboutPoliceFragment.class);
+//            startActivity(intent);
+//        });
 
 
 

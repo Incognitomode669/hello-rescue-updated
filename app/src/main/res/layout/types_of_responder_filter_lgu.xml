@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/police_responder_filter_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="start"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/PNPCheckbox"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:gravity="center">
+
+
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:id="@+id/PNPContainer"
+                        android:layout_width="240dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/incident_shape_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+
+                        <ImageButton
+                            android:id="@+id/PNPIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:padding="2dp"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/circle_background_icons"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/police_icon" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/inika_regular"
+                            android:text="Philippine National Police"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/BFPCheckbox"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:gravity="center">
+
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:id="@+id/BFPContainer"
+                        android:layout_width="240dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/incident_shape_bg"
+                        android:clickable="true"
+                        android:padding="2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+
+                        <ImageButton
+                            android:id="@+id/BFPIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:scaleType="centerCrop"
+                            android:padding="2dp"
+                            android:background="@drawable/circle_background_icons"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/fire_icon" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/inika_regular"
+                            android:text="Bureau of Fire Protection"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/MDRRMOCheckbox"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:gravity="center">
+
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:id="@+id/MDRRMOContainer"
+                        android:layout_width="240dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/incident_shape_bg"
+                        android:clickable="true"
+                        android:padding="2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+
+                        <ImageButton
+                            android:id="@+id/MDRRMOIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:scaleType="centerCrop"
+                            android:padding="2dp"
+                            android:background="@drawable/circle_background_icons"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/mdr_icon" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/inika_regular"
+                            android:gravity="center"
+                            android:text="MDDRMO"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/BARANGAYCheckbox"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:gravity="center">
+
+                    </CheckBox>
+
+
+                    <RelativeLayout
+                        android:id="@+id/BARANGAYContainer"
+                        android:layout_width="240dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="20dp"
+                        android:background="@drawable/incident_shape_bg"
+                        android:clickable="true"
+                        android:padding="2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/textView7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView7"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+
+                        <ImageButton
+                            android:id="@+id/BARANGAYIcon"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:scaleType="centerCrop"
+                            android:padding="5dp"
+                            android:background="@drawable/circle_background_icons"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/barangay_icon" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/inika_regular"
+                            android:text="Barangay"
+                            android:textColor="@color/black"
+                            android:textSize="11sp" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

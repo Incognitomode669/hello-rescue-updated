@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:openDrawer="start"
     android:background="@color/white"
-    android:id="@+id/police_drawer"
-    tools:context=".responderpolice.ResponderPoliceActivity">
+    android:id="@+id/barangay_drawer"
+    tools:context=".barangay.ResponderBarangayActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,17 +16,17 @@
         android:background="@color/white">
 
         <include
-            android:id="@+id/toolbar_police"
-            layout="@layout/toolbar_police_responder"
+            android:id="@+id/toolbar_barangay"
+            layout="@layout/toolbar_barangay_responder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView_police"
+            android:id="@+id/mapView_barangay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="5dp"
-            android:layout_below="@id/toolbar_police" />
+            android:layout_below="@id/toolbar_barangay" />
 
     </RelativeLayout>
 
@@ -39,8 +39,18 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:background="@drawable/police_admin_bg">
+            android:layout_height="320dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/barangay_bg2"
+                android:src="@drawable/barangay_admin_bg"
+                android:scaleType="centerCrop"
+                tools:ignore="MissingConstraints">
+
+
+            </ImageView>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -52,7 +62,7 @@
 
             <!-- PNP Container -->
             <LinearLayout
-                android:id="@+id/police_container"
+                android:id="@+id/barangay_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -72,21 +82,20 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:fontFamily="@font/inika_regular"
-                        android:text="PHILIPPINE NATIONALPOLICE"
-                        android:textColor="@color/black"
+                        android:text="BARANGAY HALL"
+                        android:textColor="@color/white"
                         android:textSize="19sp" />
 
                     <ImageView
                         android:id="@+id/ProfileImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:padding="15dp"
+                        android:padding="20dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/police_bg"
+                        android:background="@drawable/barangay_bg"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/police_bg_icon"
-                        android:adjustViewBounds="true"
-                        android:clipToOutline="true" />
+                        android:src="@drawable/barangay_bg_icon"
+                        android:adjustViewBounds="true"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -101,7 +110,7 @@
                             android:gravity="center"
                             android:fontFamily="@font/inika_regular"
                             android:text="Responder"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:layout_marginEnd="5dp"
                             android:textSize="15sp" />
 
@@ -154,7 +163,7 @@
                         android:textSize="14sp" />
 
                     <LinearLayout
-                        android:id="@+id/change_password_username_police"
+                        android:id="@+id/change_password_username_barangay"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -165,7 +174,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -209,8 +218,65 @@
                         </LinearLayout>
                     </LinearLayout>
 
+
                     <LinearLayout
-                        android:id="@+id/update_hotline_police"
+                        android:id="@+id/add_eligible_user"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/profile_shape2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:padding="10dp"
+                        android:clickable="true"
+                        android:layout_gravity="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="Icon button"
+                            app:srcCompat="@drawable/add_responder_icon" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="8dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Add User"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:padding="2dp"
+                                android:fontFamily="@font/inika_regular"
+                                android:text="Add new eligible user."
+                                android:textColor="@color/black"
+                                android:textSize="8sp" />
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/update_hotline_barangay"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -221,7 +287,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -266,7 +332,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/history_police"
+                        android:id="@+id/history_barangay"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -277,7 +343,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
 
                         <ImageButton
                             android:layout_width="20dp"
@@ -322,7 +388,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/sign_out_police"
+                        android:id="@+id/sign_out_barangay"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -333,7 +399,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -393,7 +459,7 @@
                         android:textSize="14sp" />
 
                     <LinearLayout
-                        android:id="@+id/how_to_use_police"
+                        android:id="@+id/how_to_use_barangay"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -404,7 +470,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
 
                         <ImageView
                             android:layout_width="20dp"
@@ -449,7 +515,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/about_police"
+                        android:id="@+id/about_barangay"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/profile_shape2"
@@ -460,7 +526,7 @@
                         android:layout_gravity="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
+                        app:layout_constraintTop_toBottomOf="@+id/History_Barangay_txt">
 
                         <ImageView
                             android:layout_width="20dp"

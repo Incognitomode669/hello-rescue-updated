@@ -5,37 +5,170 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:openDrawer="start"
-    android:background="@drawable/flag_transparent"
+    android:background="@color/white"
     android:id="@+id/lgu_drawer"
-    tools:context=".responderpolice.AdminPoliceActivity">
+    tools:context=".lgu.AdminLguActivity">
 
     <RelativeLayout
+        android:id="@+id/temp_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="30dp"
         android:background="@color/white">
+
+
+
+        <TextView
+            android:id="@+id/current_responders_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_lgu"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:text="Current Responders' Accounts"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textColor="@color/black" />
 
         <include
             android:id="@+id/toolbar_lgu"
             layout="@layout/toolbar_lgu_admin"
             android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
             android:layout_height="wrap_content" />
+
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/responders_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_below="@id/current_responders_text"
+            android:paddingStart="16dp"
+            android:layout_marginTop="5dp"
+            android:paddingEnd="16dp"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filter_container_type_of_responder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:background="@drawable/police_responder_filter_bg"
+            tools:ignore="MissingConstraints">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/main_container_type_of_responder"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:background="@drawable/filter_respoder_shape"
+                android:clickable="false"
+                android:padding="10dp"
+                android:translationY="2000dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+
+                <ImageButton
+                    android:id="@+id/drag_slide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/flag_transparent"
+                    android:contentDescription="Filter Button"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/drag_slide" />
+
+
+                <ImageButton
+                    android:id="@+id/responders_line"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:background="@drawable/flag_transparent"
+                    android:clickable="false"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@+id/type_of_responder"
+                    app:layout_constraintStart_toStartOf="@+id/type_of_responder"
+                    app:layout_constraintTop_toBottomOf="@+id/type_of_responder"
+                    app:srcCompat="@drawable/responder_filter_line" />
+
+
+                <TextView
+                    android:id="@+id/filter_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="25dp"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/inika_bold"
+                    android:gravity="start"
+                    android:singleLine="true"
+                    android:text="Filter:"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Type of Accident TextView aligned to center -->
+                <TextView
+                    android:id="@+id/type_of_responder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/inika_regular"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:text="Responders"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:elevation="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/type_of_responder"
+                    tools:layout_editor_absoluteX="10dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rectangular_background"
-        android:id="@+id/navview"
-        android:layout_gravity="start">
+        android:layout_gravity="start"
+        android:background="@drawable/rectangular_background">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="245dp"
-            android:layout_marginTop="23dp"
-            android:background="@drawable/lgu_banner">
+            android:layout_height="285dp"
+            android:layout_gravity="top"
+            android:background="@drawable/lgu_banner"
+            android:scaleType="centerCrop">
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -43,64 +176,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:paddingTop="35dp">
 
             <!-- LGU Container -->
             <LinearLayout
                 android:id="@+id/lgu_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
+                android:layout_gravity="top"
                 android:orientation="horizontal"
-                android:layout_gravity="top">
+                android:paddingTop="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:paddingTop="13dp"
                     android:layout_gravity="top"
-                    android:orientation="vertical">
-
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="13dp">
 
 
                     <ImageView
                         android:id="@+id/ProfileImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:padding="15dp"
                         android:layout_marginTop="50dp"
-                        android:background="@drawable/lgu_bg"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/lgu_icon"
                         android:adjustViewBounds="true"
-                        android:clipToOutline="true" />
+                        android:background="@drawable/lgu_bg"
+                        android:clipToOutline="true"
+                        android:padding="15dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lgu_icon" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:paddingStart="8dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingStart="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:layout_marginEnd="5dp"
                             android:fontFamily="@font/inika_regular"
+                            android:gravity="center"
                             android:text="Admin"
                             android:textColor="@color/white"
-                            android:layout_marginEnd="5dp"
                             android:textSize="15sp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/verified"
                             android:adjustViewBounds="true"
-                            android:clipToOutline="true" />
+                            android:clipToOutline="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/verified" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -112,30 +244,30 @@
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/profile_shape"
                 android:elevation="0dp"
                 android:overScrollMode="never"
-                android:layout_marginTop="20dp"
+                android:paddingTop="10dp"
                 android:scrollbarThumbVertical="@drawable/custom_scrollbar_thumb"
-                android:scrollbarTrackVertical="@drawable/custom_scrollbar_track"
-                android:background="@drawable/profile_shape"
-                android:paddingTop="10dp">
+                android:scrollbarTrackVertical="@drawable/custom_scrollbar_track">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/flag_transparent"
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="25dp"
+                    android:background="@drawable/flag_transparent"
+                    android:orientation="vertical"
                     android:paddingBottom="@dimen/cbn_height">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/inika_regular"
                         android:justificationMode="inter_word"
-                        android:layout_marginTop="8dp"
                         android:lineSpacingExtra="2dp"
                         android:text="Account Settings"
                         android:textColor="@android:color/black"
@@ -145,12 +277,12 @@
                         android:id="@+id/change_password_username_lgu"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/profile_shape2"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:padding="10dp"
-                        android:clickable="true"
                         android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/profile_shape2"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
@@ -176,8 +308,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
-                                android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
+                                android:padding="2dp"
                                 android:text="Change Username/Password"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
@@ -186,12 +318,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
-                                android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
+                                android:padding="2dp"
                                 android:text="Update your username/password, be secure."
                                 android:textColor="@color/black"
                                 android:textSize="8sp" />
-
 
 
                         </LinearLayout>
@@ -201,12 +332,12 @@
                         android:id="@+id/add_responder"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/profile_shape2"
-                        android:orientation="horizontal"
-                        android:clickable="true"
-                        android:layout_marginTop="15dp"
-                        android:padding="10dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/profile_shape2"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
@@ -214,11 +345,11 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
                             android:layout_gravity="center"
-                            android:scaleType="centerCrop"
+                            android:layout_marginStart="5dp"
                             android:background="@android:color/transparent"
                             android:contentDescription="Icon button"
+                            android:scaleType="centerCrop"
                             app:srcCompat="@drawable/add_responder_icon" />
 
                         <LinearLayout
@@ -232,8 +363,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
-                                android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
+                                android:padding="2dp"
                                 android:text="Add Responder"
                                 android:textColor="@color/black"
                                 android:textSize="13sp" />
@@ -242,12 +373,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
-                                android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
+                                android:padding="2dp"
                                 android:text="Update your hotlines."
                                 android:textColor="@color/black"
                                 android:textSize="10sp" />
-
 
 
                         </LinearLayout>
@@ -257,12 +387,12 @@
                         android:id="@+id/sign_out_lgu"
                         android:layout_width="230dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/profile_shape2"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="15dp"
-                        android:clickable="true"
-                        android:padding="10dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/profile_shape2"
+                        android:clickable="true"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/History_Police_txt">
@@ -270,11 +400,11 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginStart="5dp"
                             android:layout_gravity="center"
-                            android:scaleType="centerCrop"
+                            android:layout_marginStart="5dp"
                             android:background="@android:color/transparent"
                             android:contentDescription="Icon button"
+                            android:scaleType="centerCrop"
                             app:srcCompat="@drawable/sign_out_icon" />
 
                         <LinearLayout
@@ -288,8 +418,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
-                                android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
+                                android:padding="2dp"
                                 android:text="Sign out"
                                 android:textColor="@color/black"
                                 android:textSize="13sp" />
@@ -298,12 +428,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="start"
-                                android:padding="2dp"
                                 android:fontFamily="@font/inika_regular"
+                                android:padding="2dp"
                                 android:text="Sign out. Stay safe, help is near."
                                 android:textColor="@color/black"
                                 android:textSize="8sp" />
-
 
 
                         </LinearLayout>

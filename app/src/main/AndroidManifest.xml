@@ -88,7 +88,7 @@
         <activity android:name=".ServicesFragment"
             android:exported="true"/>
 
-        <activity android:name=".responderpolice.AdminPoliceActivity"
+        <activity android:name=".responderpolice.ResponderPoliceActivity"
             android:exported="true"/>
 
         <activity android:name=".responderpolice.RescueAlertPoliceFragment"
@@ -118,6 +118,29 @@
 
         <activity android:name=".lgu.AddResponderLguFragment"
             android:exported="true"/>
+
+
+
+        <activity android:name=".barangay.ResponderBarangayActivity"
+            android:exported="true"/>
+
+        <activity android:name=".barangay.RescueAlertBarangayFragment"
+            android:exported="true"/>
+
+        <activity android:name=".barangay.AccountInformationBarangayFragment"
+            android:exported="true"/>
+
+        <activity android:name=".barangay.UpdateHotlineBarangayFragment"
+            android:exported="true"/>
+
+        <activity android:name=".barangay.HistoryBarangayFragment"
+            android:exported="true"/>
+
+        <activity android:name=".barangay.AddEligibleUserBarangayFragment"
+            android:exported="true"/>
+
+
+
 
 
 

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/flag_transparent"
-    android:elevation="4dp"
+    android:background="@color/white"
+    android:elevation="0dp"
     android:gravity="center"
     tools:context=".lgu.AdminLguActivity">
 
@@ -26,6 +26,27 @@
 
 
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_gravity="end">
+
+
+        <ImageButton
+            android:id="@+id/lgu_filter"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:background="@drawable/flag_transparent"
+            android:contentDescription="Filter Button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/filter_responder_gif" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

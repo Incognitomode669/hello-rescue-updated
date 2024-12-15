@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class DateFilterFragment extends Fragment {
+public class DateFilterPoliceFragment extends Fragment {
 
     String[] items_custom = {"None", "Last 7 days", "Last 30 days", "Last 60 days", "Custom"};
     TextView startDateText, endDateText;

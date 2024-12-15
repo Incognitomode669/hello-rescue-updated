@@ -1,58 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:id="@+id/main_parent"
-        tools:context=".responderpolice.HistoryPoliceFragment">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/main_parent"
+    tools:context=".barangay.HistoryBarangayFragment">
 
 
 
-        <ImageButton
-            android:id="@+id/history_police_back"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/flag_transparent"
-            android:elevation="0dp"
-            android:contentDescription="back button"
-            app:layout_constraintEnd_toStartOf="@+id/History_Police_txt"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arrow1" />
+    <ImageButton
+        android:id="@+id/history_barangay_back"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/flag_transparent"
+        android:elevation="0dp"
+        android:contentDescription="back button"
+        app:layout_constraintEnd_toStartOf="@+id/History_Barangay_txt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow1" />
 
-        <TextView
-            android:id="@+id/History_Police_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/inria_serif_bold"
-            android:text="History"
-            android:textColor="@color/black"
-            android:textSize="26sp"
-            android:layout_marginTop="@dimen/margin_60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/History_Barangay_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inria_serif_bold"
+        android:text="History"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:layout_marginTop="@dimen/margin_60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
-        <ImageButton
-            android:id="@+id/police_history_filter"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:clickable="true"
-            android:background="@drawable/flag_transparent"
-            android:contentDescription="Filter Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/History_Police_txt"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/filter_responder_gif" />
+    <ImageButton
+        android:id="@+id/barangay_history_filter"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:clickable="true"
+        android:background="@drawable/flag_transparent"
+        android:contentDescription="Filter Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/History_Barangay_txt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/filter_responder_gif" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/filter_container"
@@ -71,6 +71,7 @@
             android:background="@drawable/filter_respoder_shape"
             android:padding="10dp"
             android:translationY="2000dp"
+            android:clickable="false"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -95,9 +96,9 @@
                 android:background="@drawable/flag_transparent"
                 android:visibility="invisible"
                 android:clickable="false"
-                app:layout_constraintEnd_toEndOf="@+id/type_of_accident_police"
-                app:layout_constraintStart_toStartOf="@+id/type_of_accident_police"
-                app:layout_constraintTop_toBottomOf="@+id/type_of_accident_police"
+                app:layout_constraintEnd_toEndOf="@+id/type_of_accident_barangay"
+                app:layout_constraintStart_toStartOf="@+id/type_of_accident_barangay"
+                app:layout_constraintTop_toBottomOf="@+id/type_of_accident_barangay"
                 app:srcCompat="@drawable/type_of_accident_line" />
 
 
@@ -108,9 +109,9 @@
                 android:background="@drawable/flag_transparent"
                 android:visibility="invisible"
                 android:clickable="false"
-                app:layout_constraintEnd_toEndOf="@+id/date_police"
-                app:layout_constraintStart_toStartOf="@+id/date_police"
-                app:layout_constraintTop_toBottomOf="@+id/date_police"
+                app:layout_constraintEnd_toEndOf="@+id/date_barangay"
+                app:layout_constraintStart_toStartOf="@+id/date_barangay"
+                app:layout_constraintTop_toBottomOf="@+id/date_barangay"
                 app:srcCompat="@drawable/date_line" />
 
 
@@ -135,7 +136,7 @@
 
             <!-- Type of Accident TextView aligned to center -->
             <TextView
-                android:id="@+id/type_of_accident_police"
+                android:id="@+id/type_of_accident_barangay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -153,7 +154,7 @@
 
             <!-- Date TextView aligned to end -->
             <TextView
-                android:id="@+id/date_police"
+                android:id="@+id/date_barangay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -176,7 +177,7 @@
                 android:elevation="10dp"
                 android:layout_marginTop="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/type_of_accident_police"
+                app:layout_constraintTop_toBottomOf="@+id/type_of_accident_barangay"
                 tools:layout_editor_absoluteX="10dp" />
 
 

@@ -1,4 +1,4 @@
-package com.example.hellorescue.responderpolice;
+package com.example.hellorescue.barangay;
 
 import android.os.Bundle;
 import android.view.View;
@@ -8,15 +8,15 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.hellorescue.R;
 
-public class UpdateHotlinePoliceFragment extends AppCompatActivity {
+public class UpdateHotlineBarangayFragment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.update_hotline_police);
+        setContentView(R.layout.update_hotline_barangay);
 
         // Initialize the back button
-        ImageView backButton = findViewById(R.id.update_hotline_police_back);
-        ImageButton addHotlineButton = findViewById(R.id.add_hotline_police);
+        ImageView backButton = findViewById(R.id.update_hotline_barangay_back);
+        ImageButton addHotlineButton = findViewById(R.id.add_hotline_barangay);
 
         // Set a click listener to finish the activity
         backButton.setOnClickListener(new View.OnClickListener() {

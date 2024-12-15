@@ -16,8 +16,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hellorescue.barangay.ResponderBarangayActivity;
 import com.example.hellorescue.lgu.AdminLguActivity;
-import com.example.hellorescue.responderpolice.AdminPoliceActivity;
+import com.example.hellorescue.responderpolice.ResponderPoliceActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Button loginButton, createAccountButton;
     private DatabaseReference usersDatabase;
     private DatabaseReference responderDatabase;
+    private DatabaseReference lguAdminDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Firebase database references
         usersDatabase = FirebaseDatabase.getInstance().getReference("users");
         responderDatabase = FirebaseDatabase.getInstance().getReference("Responders");
+        lguAdminDatabase = FirebaseDatabase.getInstance().getReference("LGUAdmin");
 
         usernameEditText = findViewById(R.id.login_email);
         passwordEditText = findViewById(R.id.login_pass);
@@ -82,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Secure password hashing method
     private String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -96,16 +98,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkLoginCredentials(String username, String password) {
-        // Hash the input password
         String hashedPassword = hashPassword(password);
 
-        // Check Responders first
         responderDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot responderSnapshot) {
                 boolean responderFound = false;
 
-                // Iterate through all responder roles
                 for (DataSnapshot roleSnapshot : responderSnapshot.getChildren()) {
                     for (DataSnapshot userSnapshot : roleSnapshot.getChildren()) {
                         String storedUsername = userSnapshot.child("username").getValue(String.class);
@@ -120,10 +119,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                // If no responder found, check regular users
                 if (!responderFound) {
-                    checkRegularUserLogin(username, hashedPassword);
+                    checkLGUAdminLogin(username, hashedPassword);
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void checkLGUAdminLogin(String username, String hashedPassword) {
+        lguAdminDatabase.child("LGU").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String storedUsername = dataSnapshot.child("username").getValue(String.class);
+                    String storedPassword = dataSnapshot.child("password").getValue(String.class);
+
+                    if (username.equals(storedUsername) && hashedPassword.equals(storedPassword)) {
+                        navigateToResponderDashboard("LGU");
+                        return;
+                    }
+                }
+                checkRegularUserLogin(username, hashedPassword);
             }
 
             @Override
@@ -141,12 +162,9 @@ public class MainActivity extends AppCompatActivity {
                         if (dataSnapshot.exists()) {
                             for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                                 String storedPassword = userSnapshot.child("password").getValue(String.class);
-
-                                // For existing users, hash their current password
                                 String storedHashedPassword = hashPassword(storedPassword);
 
                                 if (hashedPassword.equals(storedHashedPassword)) {
-                                    // Successful login for regular users
                                     navigateToHome();
                                     return;
                                 }
@@ -166,21 +184,26 @@ public class MainActivity extends AppCompatActivity {
 
     private void navigateToResponderDashboard(String role) {
         Intent intent;
-        switch (role) {
+        switch (role.toUpperCase()) {
             case "POLICE":
+                intent = new Intent(MainActivity.this, ResponderPoliceActivity.class);
+                break;
+            case "LGU":
                 intent = new Intent(MainActivity.this, AdminLguActivity.class);
                 break;
-            case "BFP":
-                intent = new Intent(MainActivity.this, AdminPoliceActivity.class);
+            case "MDRRMO":
+                // TODO: Implement MDRRMO activity
+                Toast.makeText(this, "MDRRMO role not implemented yet", Toast.LENGTH_SHORT).show();
+                return;
+            case "BARANGAY":
+                intent = new Intent(MainActivity.this, ResponderBarangayActivity.class);
                 break;
-//            case "MDRRMO":
-//                intent = new Intent(MainActivity.this, MDRRMOActivity.class);
-//                break;
-//            case "Barangay":
-//                intent = new Intent(MainActivity.this, BarangayActivity.class);
-//                break;
+            case "FIRE":
+                // TODO: Implement Barangay activity
+                Toast.makeText(this, "Barangay role not implemented yet", Toast.LENGTH_SHORT).show();
+                return;
             default:
-                Toast.makeText(this, "Invalid role", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid role: " + role, Toast.LENGTH_SHORT).show();
                 return;
         }
         startActivity(intent);

@@ -1,12 +1,12 @@
-package com.example.hellorescue.responderpolice;
+package com.example.hellorescue.barangay;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class HistoryPolicePagerAdapter extends FragmentStateAdapter {
+public class HistoryBarangayPagerAdapter extends FragmentStateAdapter {
 
-    public HistoryPolicePagerAdapter(@NonNull HistoryPoliceFragment fragment) {
+    public HistoryBarangayPagerAdapter(@NonNull HistoryBarangayFragment fragment) {
         super(fragment);
     }
 
@@ -15,9 +15,9 @@ public class HistoryPolicePagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         // Return a fragment for "Today" or "All"
         if (position == 0) {
-            return new TypeofIncidentFilterPoliceFragment();
+            return new TypeofIncidentFilterBarangayFragment();
         } else {
-            return new DateFilterPoliceFragment();
+            return new DateFilterBarangayFragment();
         }
     }
 
