@@ -14,8 +14,8 @@
         android:id="@+id/update_hotline_police_back"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/flag_transparent"
+        android:layout_marginTop="70dp"
+        android:background="@android:color/transparent"
         android:contentDescription="back button"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,36 +26,217 @@
         android:id="@+id/Update_Hotline_Police_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_60dp"
         android:fontFamily="@font/inria_serif_bold"
         android:text="Update Hotline"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:layout_marginTop="@dimen/margin_60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/temp_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp"
+        android:background="@color/white">
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Current Hotlines"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="30dp"
+        android:text="Current Hotlines"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_hotline_police_back" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/add_hotline_police"
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/responders_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView9"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"/>
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="40dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/add_hotline_button_selector"
-        android:clickable="true"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/add_hotline_button" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/add_hotline_police"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/add_hotline_button_selector"
+            android:clickable="true"
+            app:srcCompat="@drawable/add_hotline_button" />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_new_hotline_number_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/transparent_rectangle">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/add_new_hotline_number_container"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330dp"
+            android:background="@drawable/rounded_change_password_police"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/inika_regular"
+                        android:gravity="center"
+                        android:paddingTop="14dp"
+                        android:text="Add New Hotline Number"
+                        android:textSize="16sp" />
+
+
+                    <EditText
+                        android:id="@+id/enter_the_number"
+                        android:layout_width="265dp"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/current_password_bg2"
+                        android:digits="0123456789"
+                        android:fontFamily="serif"
+                        android:hint="Enter your number"
+                        android:inputType="phone"
+                        android:maxLength="11"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:singleLine="true"
+                        android:textColorHint="#bdbdbc"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="23dp"
+                        android:paddingEnd="23dp">
+
+
+
+                    <TextView
+                        android:id="@+id/error_hint_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="28dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/inika_regular"
+                        android:gravity="start"
+                        android:text="Error Hint"
+                        android:textColor="@color/red"
+                        android:textSize="12dp"
+                        android:visibility="invisible">
+
+                    </TextView>
+
+                        <TextView
+                            android:id="@+id/counter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:fontFamily="@font/inika_regular"
+                            android:gravity="end"
+                            android:text="0/11"
+                            android:textColor="@color/black"
+                            android:textSize="12dp"
+                            android:visibility="visible"
+                            app:layout_constraintEnd_toEndOf="parent">
+
+                        </TextView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/add_hotline_button"
+                        android:layout_width="265dp"
+                        android:layout_height="28dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/update_password_shape"
+                        android:elevation="20dp"
+                        android:fontFamily="@font/inika_regular"
+                        android:shadowColor="#000000"
+                        android:shadowDy="4"
+                        android:shadowRadius="5"
+                        android:text="ADD"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/login_pass"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:ignore="HardcodedText" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
