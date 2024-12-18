@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,10 +21,19 @@ import java.util.List;
 public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineViewHolder> {
     private List<Hotline> hotlineList;
     private DatabaseReference hotlineRef;
+    private View updateHotlineNumberBody;
+    private ImageView addHotlinePolice;
+    private OnHotlineSelectedListener listener;
 
-    public HotlineAdapter(List<Hotline> hotlineList, DatabaseReference hotlineRef) {
+    public HotlineAdapter(List<Hotline> hotlineList, DatabaseReference hotlineRef, View updateHotlineNumberBody, ImageView addHotlinePolice) {
         this.hotlineList = hotlineList;
         this.hotlineRef = hotlineRef;
+        this.updateHotlineNumberBody = updateHotlineNumberBody;
+        this.addHotlinePolice = addHotlinePolice;
+    }
+
+    public void setOnHotlineSelectedListener(OnHotlineSelectedListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -40,7 +50,6 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
         holder.roleTextView.setText(hotline.getRole());
 
         holder.deleteButton.setOnClickListener(v -> {
-            // Apply click animation
             holder.deleteButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
 
             String hotlineKey = hotline.getKey();
@@ -61,33 +70,47 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
                         .show();
             }
         });
+
+        holder.editButton.setOnClickListener(v -> {
+            holder.editButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
+
+            updateHotlineNumberBody.setVisibility(View.VISIBLE);
+            Animation fadeIn = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.fade_in);
+            updateHotlineNumberBody.startAnimation(fadeIn);
+
+            addHotlinePolice.setEnabled(false);
+            addHotlinePolice.animate()
+                    .alpha(0.5f)
+                    .setDuration(200)
+                    .start();
+
+            if (listener != null) {
+                listener.onHotlineSelected(hotline);
+            }
+        });
     }
-
-
-
-
 
     @Override
     public int getItemCount() {
         return hotlineList.size();
     }
 
+    public interface OnHotlineSelectedListener {
+        void onHotlineSelected(Hotline hotline);
+    }
+
     public class HotlineViewHolder extends RecyclerView.ViewHolder {
         TextView numberTextView;
         TextView roleTextView;
         ImageView deleteButton;
-
+        ImageView editButton;
 
         public HotlineViewHolder(@NonNull View itemView) {
             super(itemView);
             numberTextView = itemView.findViewById(R.id.hotline_number);
             roleTextView = itemView.findViewById(R.id.text_role);
             deleteButton = itemView.findViewById(R.id.button_delete);
+            editButton = itemView.findViewById(R.id.button_edit);
         }
-
-
-
-
-
     }
 }
