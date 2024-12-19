@@ -1,22 +1,27 @@
 package com.example.hellorescue.responderpolice;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.hellorescue.R;
 import com.google.firebase.database.DatabaseReference;
-
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineViewHolder> {
     private List<Hotline> hotlineList;
@@ -24,6 +29,7 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
     private View updateHotlineNumberBody;
     private ImageView addHotlinePolice;
     private OnHotlineSelectedListener listener;
+    private boolean areButtonsEnabled = true;
 
     public HotlineAdapter(List<Hotline> hotlineList, DatabaseReference hotlineRef, View updateHotlineNumberBody, ImageView addHotlinePolice) {
         this.hotlineList = hotlineList;
@@ -34,6 +40,11 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
 
     public void setOnHotlineSelectedListener(OnHotlineSelectedListener listener) {
         this.listener = listener;
+    }
+
+    public void setButtonsEnabled(boolean enabled) {
+        this.areButtonsEnabled = enabled;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -49,68 +60,204 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
         holder.numberTextView.setText(hotline.getNumber());
         holder.roleTextView.setText(hotline.getRole());
 
-        holder.deleteButton.setOnClickListener(v -> {
-            holder.deleteButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
+        // Set the enabled state of the buttons
+        holder.deleteButton.setEnabled(areButtonsEnabled);
+        holder.editButton.setEnabled(areButtonsEnabled);
 
-            String hotlineKey = hotline.getKey();
-            if (hotlineKey != null) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
-                builder.setTitle("Confirm Delete")
-                        .setMessage("Are you sure you want to delete this hotline?")
-                        .setPositiveButton("Delete", (dialog, which) -> {
-                            hotlineRef.child(hotlineKey).removeValue()
-                                    .addOnSuccessListener(aVoid -> {
-                                        Toast.makeText(holder.itemView.getContext(), "Hotline deleted", Toast.LENGTH_SHORT).show();
-                                    })
-                                    .addOnFailureListener(e -> {
-                                        Toast.makeText(holder.itemView.getContext(), "Failed to delete hotline", Toast.LENGTH_SHORT).show();
-                                    });
-                        })
-                        .setNegativeButton("Cancel", null)
-                        .show();
-            }
-        });
+        // Adjust alpha for visual feedback
+        float alpha = areButtonsEnabled ? 1.0f : 0.5f;
+        holder.deleteButton.setAlpha(alpha);
+        holder.editButton.setAlpha(alpha);
 
-        holder.editButton.setOnClickListener(v -> {
-            holder.editButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
+        if (areButtonsEnabled) {
 
-            updateHotlineNumberBody.setVisibility(View.VISIBLE);
-            Animation fadeIn = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.fade_in);
-            updateHotlineNumberBody.startAnimation(fadeIn);
+            holder.deleteButton.setOnClickListener(v -> {
+                holder.deleteButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
 
-            addHotlinePolice.setEnabled(false);
-            addHotlinePolice.animate()
-                    .alpha(0.5f)
-                    .setDuration(200)
-                    .start();
+                String hotlineKey = hotline.getKey();
+                if (hotlineKey != null) {
+                    // Create custom dialog
+                    Dialog customDialog = new Dialog(holder.itemView.getContext());
+                    customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    customDialog.setContentView(R.layout.delete_confirmation_dialog);
+                    customDialog.setCanceledOnTouchOutside(true);
 
-            if (listener != null) {
-                listener.onHotlineSelected(hotline);
-            }
-        });
+
+
+
+                    // Override the back button press
+                    customDialog.setOnKeyListener((dialog, keyCode, event) -> {
+                        if (keyCode == android.view.KeyEvent.KEYCODE_BACK && event.getAction() == android.view.KeyEvent.ACTION_UP) {
+                            // Apply the same animation as the "No" button click
+                            View dialogContainer = customDialog.findViewById(R.id.main_container);
+                            dialogContainer.animate()
+                                    .translationY(2000)
+                                    .setDuration(300)
+                                    .withEndAction(() -> customDialog.dismiss())
+                                    .start();
+                            return true; // Consume the event
+                        }
+                        return false;
+                    });
+
+                    // Set dialog window attributes
+                    Window window = customDialog.getWindow();
+                    if (window != null) {
+                        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        window.setGravity(Gravity.BOTTOM);
+                        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    }
+
+                    // Get views
+                    AppCompatButton yesButton = customDialog.findViewById(R.id.yes);
+                    AppCompatButton noButton = customDialog.findViewById(R.id.no);
+                    TextView titleText = customDialog.findViewById(R.id.filter_text);
+                    TextView messageText = customDialog.findViewById(R.id.textView12);
+
+                    // Set texts
+                    titleText.setText("Delete Hotline?");
+                    messageText.setText("Are you sure you want to delete this hotline?");
+
+                    // Show dialog with animation
+                    customDialog.show();
+
+                    // Initial setup for opening animation
+                    View dialogContainer = customDialog.findViewById(R.id.main_container);
+                    dialogContainer.setTranslationY(2000);
+                    dialogContainer.animate()
+                            .translationY(0)
+                            .setDuration(300)
+                            .start();
+
+                    // Set click listeners with animations
+                    yesButton.setOnClickListener(dialogView -> {
+                        View dialogContainer1 = customDialog.findViewById(R.id.main_container);
+                        dialogContainer1.animate()
+                                .translationY(2000)
+                                .setDuration(300)
+                                .withEndAction(() -> {
+                                    customDialog.dismiss();
+
+                                    // Show loading dialog
+                                    AlertDialog loadingDialog = new AlertDialog.Builder(holder.itemView.getContext())
+                                            .setMessage("Deleting hotline...")
+                                            .setCancelable(false)
+                                            .create();
+                                    loadingDialog.show();
+
+                                    Handler timeoutHandler = new Handler();
+                                    AtomicBoolean operationCompleted = new AtomicBoolean(false);
+
+                                    final int deletePosition = holder.getAdapterPosition();
+
+                                    Runnable timeoutRunnable = () -> {
+                                        if (!operationCompleted.getAndSet(true)) {
+                                            loadingDialog.dismiss();
+                                            Toast.makeText(holder.itemView.getContext(),
+                                                    "Operation timed out. Please check your connection and try again.",
+                                                    Toast.LENGTH_SHORT).show();
+
+                                            hotlineRef.child(hotlineKey).setValue(hotline)
+                                                    .addOnFailureListener(e -> {
+                                                        Toast.makeText(holder.itemView.getContext(),
+                                                                "Error restoring data: " + e.getMessage(),
+                                                                Toast.LENGTH_SHORT).show();
+                                                    });
+                                        }
+                                    };
+
+                                    timeoutHandler.postDelayed(timeoutRunnable, 10000);
+
+                                    hotlineRef.child(hotlineKey).removeValue()
+                                            .addOnSuccessListener(aVoid -> {
+                                                if (!operationCompleted.getAndSet(true)) {
+                                                    timeoutHandler.removeCallbacks(timeoutRunnable);
+                                                    loadingDialog.dismiss();
+
+                                                    if (deletePosition != RecyclerView.NO_POSITION && deletePosition < hotlineList.size()) {
+                                                        hotlineList.remove(deletePosition);
+                                                        notifyItemRemoved(deletePosition);
+                                                        notifyItemRangeChanged(deletePosition, getItemCount());
+                                                    }
+
+                                                    Toast.makeText(holder.itemView.getContext(),
+                                                            "Hotline deleted successfully",
+                                                            Toast.LENGTH_SHORT).show();
+                                                }
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                if (!operationCompleted.getAndSet(true)) {
+                                                    timeoutHandler.removeCallbacks(timeoutRunnable);
+                                                    loadingDialog.dismiss();
+
+                                                    hotlineRef.child(hotlineKey).setValue(hotline)
+                                                            .addOnFailureListener(restoreError -> {
+                                                                Toast.makeText(holder.itemView.getContext(),
+                                                                        "Error restoring data: " + restoreError.getMessage(),
+                                                                        Toast.LENGTH_SHORT).show();
+                                                            });
+
+                                                    Toast.makeText(holder.itemView.getContext(),
+                                                            "Failed to delete hotline: " + e.getMessage(),
+                                                            Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                })
+                                .start();
+                    });
+
+                    noButton.setOnClickListener(dialogView -> {
+                        View dialogContainer1 = customDialog.findViewById(R.id.main_container);
+                        dialogContainer1.animate()
+                                .translationY(2000)
+                                .setDuration(300)
+                                .withEndAction(() -> customDialog.dismiss())
+                                .start();
+                    });
+                }
+            });
+
+            holder.editButton.setOnClickListener(v -> {
+                holder.editButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
+
+                updateHotlineNumberBody.setVisibility(View.VISIBLE);
+                Animation fadeIn = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.fade_in);
+                updateHotlineNumberBody.startAnimation(fadeIn);
+
+                addHotlinePolice.setEnabled(false);
+                addHotlinePolice.animate()
+                        .alpha(0.5f)
+                        .setDuration(200)
+                        .start();
+
+                if (listener != null) {
+                    listener.onHotlineSelected(hotline);
+                }
+            });
     }
+}
 
-    @Override
-    public int getItemCount() {
-        return hotlineList.size();
+@Override
+public int getItemCount() {
+    return hotlineList.size();
+}
+
+public interface OnHotlineSelectedListener {
+    void onHotlineSelected(Hotline hotline);
+}
+
+public static class HotlineViewHolder extends RecyclerView.ViewHolder {
+    TextView numberTextView;
+    TextView roleTextView;
+    ImageView deleteButton;
+    ImageView editButton;
+
+    public HotlineViewHolder(@NonNull View itemView) {
+        super(itemView);
+        numberTextView = itemView.findViewById(R.id.hotline_number);
+        roleTextView = itemView.findViewById(R.id.text_role);
+        deleteButton = itemView.findViewById(R.id.button_delete);
+        editButton = itemView.findViewById(R.id.button_edit);
     }
-
-    public interface OnHotlineSelectedListener {
-        void onHotlineSelected(Hotline hotline);
-    }
-
-    public class HotlineViewHolder extends RecyclerView.ViewHolder {
-        TextView numberTextView;
-        TextView roleTextView;
-        ImageView deleteButton;
-        ImageView editButton;
-
-        public HotlineViewHolder(@NonNull View itemView) {
-            super(itemView);
-            numberTextView = itemView.findViewById(R.id.hotline_number);
-            roleTextView = itemView.findViewById(R.id.text_role);
-            deleteButton = itemView.findViewById(R.id.button_delete);
-            editButton = itemView.findViewById(R.id.button_edit);
-        }
-    }
+}
 }

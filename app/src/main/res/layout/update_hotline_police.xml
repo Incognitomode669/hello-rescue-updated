@@ -241,8 +241,7 @@
         android:id="@+id/update_hotline_number_body"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/transparent_rectangle"
-        android:visibility="gone">
+        android:background="@drawable/transparent_rectangle">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -373,14 +372,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
