@@ -377,7 +377,8 @@ public class UpdateHotlinePoliceFragment extends AppCompatActivity {
             return;
         }
 
-        // Disable the button and make addNewHotlineNumberBody unclickable
+        // Disable all buttons while adding
+        hotlineAdapter.setButtonsEnabled(false);  // Disable all edit and delete buttons
         addHotlineButton.setEnabled(false);
         addHotlineButton.animate()
                 .alpha(0.5f)
@@ -400,11 +401,12 @@ public class UpdateHotlinePoliceFragment extends AppCompatActivity {
             // Timeout runnable
             Runnable timeoutRunnable = () -> {
                 if (!operationCompleted.getAndSet(true)) {
-                    // Operation timed out
                     errorHintText.setVisibility(View.INVISIBLE);
                     errorHintText.setTag(false);
+                    hotlineAdapter.setButtonsEnabled(true);  // Re-enable buttons
 
-                    Toast.makeText(this, "Operation timed out. Please check your connection and try again.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Operation timed out. Please check your connection and try again.",
+                            Toast.LENGTH_SHORT).show();
 
                     newHotlineRef.removeValue();
 
@@ -444,6 +446,8 @@ public class UpdateHotlinePoliceFragment extends AppCompatActivity {
                             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                             imm.hideSoftInputFromWindow(enterNumberEditText.getWindowToken(), 0);
 
+                            // Re-enable buttons and restore UI state
+                            hotlineAdapter.setButtonsEnabled(true);
                             addHotlineButton.setEnabled(true);
                             addHotlineButton.animate()
                                     .alpha(1.0f)
@@ -467,6 +471,8 @@ public class UpdateHotlinePoliceFragment extends AppCompatActivity {
                             hotlineList.remove(newHotline);
                             hotlineAdapter.notifyDataSetChanged();
 
+                            // Re-enable buttons and restore UI state
+                            hotlineAdapter.setButtonsEnabled(true);
                             addHotlineButton.setEnabled(true);
                             addHotlineButton.animate()
                                     .alpha(1.0f)
@@ -482,6 +488,8 @@ public class UpdateHotlinePoliceFragment extends AppCompatActivity {
             Toast.makeText(this, "Failed to generate key for new hotline", Toast.LENGTH_SHORT).show();
             clearInputsAndHints();
 
+            // Re-enable buttons and restore UI state
+            hotlineAdapter.setButtonsEnabled(true);
             addHotlineButton.setEnabled(true);
             addHotlineButton.animate()
                     .alpha(1.0f)
@@ -493,6 +501,7 @@ public class UpdateHotlinePoliceFragment extends AppCompatActivity {
             hideAddHotlineNumberSection();
         }
     }
+
 
 
 

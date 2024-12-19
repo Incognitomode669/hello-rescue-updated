@@ -1,5 +1,6 @@
 package com.example.hellorescue.responderpolice;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -16,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.WindowCallbackWrapper;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.hellorescue.R;
@@ -54,6 +57,7 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
         return new HotlineViewHolder(view);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onBindViewHolder(@NonNull HotlineViewHolder holder, int position) {
         Hotline hotline = hotlineList.get(position);
@@ -80,22 +84,28 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
                     Dialog customDialog = new Dialog(holder.itemView.getContext());
                     customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     customDialog.setContentView(R.layout.delete_confirmation_dialog);
-                    customDialog.setCanceledOnTouchOutside(true);
+                    customDialog.setCanceledOnTouchOutside(false); // Changed to false
 
-
-
+                    // Set OnCancelListener for touch outside
+                    customDialog.setOnCancelListener(dialog -> {
+                        View dialogContainer = customDialog.findViewById(R.id.main_container);
+                        dialogContainer.animate()
+                                .translationY(2000)
+                                .setDuration(200)
+                                .withEndAction(() -> customDialog.dismiss())
+                                .start();
+                    });
 
                     // Override the back button press
                     customDialog.setOnKeyListener((dialog, keyCode, event) -> {
                         if (keyCode == android.view.KeyEvent.KEYCODE_BACK && event.getAction() == android.view.KeyEvent.ACTION_UP) {
-                            // Apply the same animation as the "No" button click
                             View dialogContainer = customDialog.findViewById(R.id.main_container);
                             dialogContainer.animate()
                                     .translationY(2000)
-                                    .setDuration(300)
+                                    .setDuration(200)
                                     .withEndAction(() -> customDialog.dismiss())
                                     .start();
-                            return true; // Consume the event
+                            return true;
                         }
                         return false;
                     });
@@ -106,6 +116,32 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
                         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                         window.setGravity(Gravity.BOTTOM);
                         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                        // Add touch listener for outside touches
+                        window.setCallback(new WindowCallbackWrapper(window.getCallback()) {
+                            @Override
+                            public boolean dispatchTouchEvent(MotionEvent event) {
+                                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                                    float dialogX = window.getDecorView().getX();
+                                    float dialogY = window.getDecorView().getY();
+                                    float dialogWidth = window.getDecorView().getWidth();
+                                    float dialogHeight = window.getDecorView().getHeight();
+
+                                    // Check if touch is outside dialog bounds
+                                    if (event.getX() < dialogX || event.getX() > dialogX + dialogWidth ||
+                                            event.getY() < dialogY || event.getY() > dialogY + dialogHeight) {
+                                        View dialogContainer = customDialog.findViewById(R.id.main_container);
+                                        dialogContainer.animate()
+                                                .translationY(2000)
+                                                .setDuration(200)
+                                                .withEndAction(() -> customDialog.dismiss())
+                                                .start();
+                                        return true;
+                                    }
+                                }
+                                return super.dispatchTouchEvent(event);
+                            }
+                        });
                     }
 
                     // Get views
@@ -126,7 +162,7 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
                     dialogContainer.setTranslationY(2000);
                     dialogContainer.animate()
                             .translationY(0)
-                            .setDuration(300)
+                            .setDuration(200)
                             .start();
 
                     // Set click listeners with animations
@@ -134,7 +170,7 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
                         View dialogContainer1 = customDialog.findViewById(R.id.main_container);
                         dialogContainer1.animate()
                                 .translationY(2000)
-                                .setDuration(300)
+                                .setDuration(200)
                                 .withEndAction(() -> {
                                     customDialog.dismiss();
 
@@ -210,12 +246,13 @@ public class HotlineAdapter extends RecyclerView.Adapter<HotlineAdapter.HotlineV
                         View dialogContainer1 = customDialog.findViewById(R.id.main_container);
                         dialogContainer1.animate()
                                 .translationY(2000)
-                                .setDuration(300)
+                                .setDuration(200)
                                 .withEndAction(() -> customDialog.dismiss())
                                 .start();
                     });
                 }
             });
+
 
             holder.editButton.setOnClickListener(v -> {
                 holder.editButton.startAnimation(AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.button_scale));
