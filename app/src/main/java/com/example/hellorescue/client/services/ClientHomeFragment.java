@@ -1,5 +1,6 @@
-
 package com.example.hellorescue.client.services;
+
+import static androidx.core.location.LocationManagerCompat.getCurrentLocation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -7,16 +8,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Outline;
 import android.graphics.Rect;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
+import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,6 +31,8 @@ import android.view.ViewOutlineProvider;
 import android.view.WindowManager;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.FrameLayout;
@@ -40,13 +48,23 @@ import android.view.animation.AnimationUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
 import com.example.hellorescue.R;
+import com.example.hellorescue.client.submitreport_police.PoliceReport;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,6 +76,7 @@ public class ClientHomeFragment extends Fragment {
     private static final int CAMERA_PERMISSION_CODE = 100;
     private static final int CAMERA_REQUEST_CODE_FIRE = 101;
     private static final int CAMERA_REQUEST_CODE_POLICE = 102;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 103; // Add this line
     private static final String FILE_PROVIDER_AUTHORITY = "com.example.hellorescue.fileprovider";
 
     // Arrays for dropdown menus
@@ -76,6 +95,12 @@ public class ClientHomeFragment extends Fragment {
     private Spinner sexSpinner;
     private ImageButton imageButtonFire;
     private ImageButton imageButtonPolice;
+
+    private EditText policeDescriptionEditText;
+    private Button policeSubmitButton;
+    private FusedLocationProviderClient fusedLocationClient;
+    private LocationCallback locationCallback;
+    private Location currentLocation;
 
     // Camera-related variables
     private Uri imageUriFire;
@@ -117,6 +142,8 @@ public class ClientHomeFragment extends Fragment {
         setupTextViews(view);
         setupCornerIcons(view);
 
+        setupPoliceForm(view);
+
         return view;
     }
 
@@ -144,8 +171,8 @@ public class ClientHomeFragment extends Fragment {
                 outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), cornerRadius);
             }
         });
-        imageButtonFire.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.rounded_image_background));
-        imageButtonPolice.setBackground(ContextCompat.getDrawable(requireContext(), R.drawable.rounded_image_background));
+
+
 
         // Initialize form elements
         autoCompleteTxtFire = view.findViewById(R.id.auto_complete_txt_fire);
@@ -331,24 +358,55 @@ public class ClientHomeFragment extends Fragment {
         if (resultCode == Activity.RESULT_OK) {
             try {
                 if (requestCode == CAMERA_REQUEST_CODE_FIRE && imageUriFire != null) {
+                    // Get image dimensions using ContentResolver
+                    try (ParcelFileDescriptor parcelFileDescriptor =
+                                 requireContext().getContentResolver().openFileDescriptor(imageUriFire, "r")) {
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inJustDecodeBounds = true;
+                        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+                        BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
+                        int imageWidth = options.outWidth;
+                        int imageHeight = options.outHeight;
+
+                        Log.e(TAG, "Fire Image Size - Width: " + imageWidth + "px, Height: " + imageHeight + "px");
+                        Toast.makeText(getContext(), "Fire Image: " + imageWidth + "x" + imageHeight, Toast.LENGTH_SHORT).show();
+                    }
+
                     imageButtonFire.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    imageButtonFire.setImageURI(null); // Clear the image first
+                    imageButtonFire.setImageURI(null);
                     imageButtonFire.setImageURI(imageUriFire);
-                    imageButtonFire.setClipToOutline(true); // Ensure clipping is enabled after setting new image
+                    imageButtonFire.setClipToOutline(true);
+
                 } else if (requestCode == CAMERA_REQUEST_CODE_POLICE && imageUriPolice != null) {
+                    // Get image dimensions using ContentResolver
+                    try (ParcelFileDescriptor parcelFileDescriptor =
+                                 requireContext().getContentResolver().openFileDescriptor(imageUriPolice, "r")) {
+                        BitmapFactory.Options options = new BitmapFactory.Options();
+                        options.inJustDecodeBounds = true;
+                        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+                        BitmapFactory.decodeFileDescriptor(fileDescriptor, null, options);
+                        int imageWidth = options.outWidth;
+                        int imageHeight = options.outHeight;
+
+                        Log.e(TAG, "Police Image Size - Width: " + imageWidth + "px, Height: " + imageHeight + "px");
+                        Toast.makeText(getContext(), "Police Image: " + imageWidth + "x" + imageHeight, Toast.LENGTH_SHORT).show();
+                    }
+
                     imageButtonPolice.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    imageButtonPolice.setImageURI(null); // Clear the image first
+                    imageButtonPolice.setImageURI(null);
                     imageButtonPolice.setImageURI(imageUriPolice);
-                    imageButtonPolice.setClipToOutline(true); // Ensure clipping is enabled after setting new image
+                    imageButtonPolice.setClipToOutline(true);
                 }
             } catch (Exception e) {
-                Toast.makeText(getContext(), "Error loading captured image", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error loading captured image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Error loading image: " + e.getMessage());
                 e.printStackTrace();
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
             Toast.makeText(getContext(), "Camera capture cancelled", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void setupKeyboardAdjustment(View rootView) {
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -577,4 +635,128 @@ public class ClientHomeFragment extends Fragment {
             }
         }
     }
+
+
+    private void setupPoliceForm(View view) {
+        policeDescriptionEditText = view.findViewById(R.id.description_field_police);
+        policeSubmitButton = view.findViewById(R.id.submit_btn_police);
+
+        // Initialize location services
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+
+        policeSubmitButton.setOnClickListener(v -> {
+            if (validatePoliceForm()) {
+                // Disable button immediately when submission starts
+                policeSubmitButton.setEnabled(false);
+                policeSubmitButton.setText("Submitting..."); // Optional: show submitting state
+                getCurrentLocation();
+            }
+        });
+    }
+
+    private boolean validatePoliceForm() {
+        String selectedType = autoCompleteTxtPolice.getText().toString();
+        String description = policeDescriptionEditText.getText().toString().trim();
+
+        if (selectedType.isEmpty()) {
+            autoCompleteTxtPolice.setError("Please select an incident type");
+            return false;
+        }
+
+        if (description.isEmpty()) {
+            policeDescriptionEditText.setError("Please provide a description");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void getCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+            return;
+        }
+
+        LocationRequest locationRequest = LocationRequest.create()
+                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                .setInterval(10000)
+                .setFastestInterval(5000);
+
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) return;
+                currentLocation = locationResult.getLastLocation();
+                submitPoliceReport();
+                fusedLocationClient.removeLocationUpdates(locationCallback);
+            }
+        };
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+    }
+
+    private void submitPoliceReport() {
+        // Create report object
+        PoliceReport report = new PoliceReport(
+                autoCompleteTxtPolice.getText().toString(),
+                policeDescriptionEditText.getText().toString(),
+                currentLocation.getLatitude(),
+                currentLocation.getLongitude(),
+                imageUriPolice != null ? imageUriPolice.toString() : null
+        );
+
+        // Send to Firebase or your backend
+        sendReportToServer(report);
+    }
+
+    private void sendReportToServer(PoliceReport report) {
+        DatabaseReference policeReportsRef = FirebaseDatabase.getInstance()
+                .getReference("police_reports");
+
+        String reportId = policeReportsRef.push().getKey();
+        if (reportId != null) {
+            report.setId(reportId);
+
+            policeReportsRef.child(reportId).setValue(report)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(getContext(), "Report submitted successfully", Toast.LENGTH_SHORT).show();
+                        clearPoliceForm();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(getContext(), "Failed to submit report: " + e.getMessage(),
+                                Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnCompleteListener(task -> {
+                        // Re-enable button after submission completes (success or failure)
+                        if (policeSubmitButton != null) {
+                            policeSubmitButton.setEnabled(true);
+                            policeSubmitButton.setText("Submit"); // Reset button text
+                        }
+                    });
+        }
+    }
+
+    private void clearPoliceForm() {
+        if (autoCompleteTxtPolice != null) {
+            autoCompleteTxtPolice.setText("");
+        }
+        if (policeDescriptionEditText != null) {
+            policeDescriptionEditText.setText("");
+        }
+        if (imageButtonPolice != null) {
+            imageButtonPolice.setImageResource(R.drawable.camera1);
+        }
+        imageUriPolice = null;
+
+        // Close the modal if needed
+        if (currentOpenModal != null) {
+            closeModal(currentOpenModal);
+        }
+    }
+
+
+
+
 }

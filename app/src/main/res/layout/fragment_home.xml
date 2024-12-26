@@ -298,7 +298,8 @@
                 android:id="@+id/modal_fire"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:elevation="10dp">
+                android:elevation="10dp"
+                android:visibility="gone">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -367,19 +368,30 @@
                     </RelativeLayout>
 
 
-
-
-
-                    <ImageButton
-                        android:id="@+id/image_button_fire"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/qwe"
                         android:layout_width="290dp"
                         android:layout_height="135dp"
                         android:layout_marginTop="12dp"
                         android:background="@drawable/rounded_background2"
-                        android:src="@drawable/camera1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/relativeLayout_fire" />
+                        app:layout_constraintEnd_toEndOf="@+id/relativeLayout_fire"
+                        app:layout_constraintStart_toStartOf="@+id/relativeLayout_fire"
+                        app:layout_constraintTop_toBottomOf="@id/relativeLayout_fire">
+
+
+                        <ImageButton
+                            android:id="@+id/image_button_fire"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:src="@drawable/camera1"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                     <TextView
                         android:id="@+id/description_text_fire"
@@ -392,7 +404,7 @@
                         android:textColor="@color/black"
                         android:textSize="11sp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/image_button_fire" />
+                        app:layout_constraintTop_toBottomOf="@id/qwe" />
 
                     <EditText
                         android:id="@+id/description_field_fire"
@@ -443,8 +455,7 @@
                 android:id="@+id/modal_police"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:elevation="10dp"
-                android:visibility="gone">
+                android:elevation="10dp">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -508,7 +519,7 @@
                                 android:fontFamily="@font/inika_regular"
                                 android:inputType="none"
                                 android:popupBackground="@drawable/dropdown_round_background"
-                                android:textSize="14sp"/>
+                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </RelativeLayout>
 
@@ -558,7 +569,7 @@
                         app:layout_constraintTop_toBottomOf="@id/description_text_police" />
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/error_btn_police"
+                        android:id="@+id/submit_btn_police"
                         android:layout_width="100dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
@@ -574,8 +585,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/description_field_police"
                         tools:ignore="HardcodedText,SmallSp" />
-
-
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

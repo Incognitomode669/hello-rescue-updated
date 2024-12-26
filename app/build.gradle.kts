@@ -136,6 +136,8 @@ dependencies {
 
     implementation ("org.mindrot:jbcrypt:0.4")
 
+    implementation ("com.google.firebase:firebase-storage:20.2.1")
+
 
 
 

@@ -138,6 +138,8 @@
         <activity android:name=".barangay.AddEligibleUserBarangayFragment"
             android:exported="true"/>
 
+
+
     </application>
 
 </manifest>
