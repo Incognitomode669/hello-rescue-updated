@@ -27,6 +27,8 @@ public class FacilitiesFragment extends Fragment {
 
         LinearLayout PoliceMapView = view.findViewById(R.id.police_view_map);
         LinearLayout FireMapView = view.findViewById(R.id.fire_view_map);
+        LinearLayout MdrrmoMapView = view.findViewById(R.id.mdrrmo_view_map);
+        LinearLayout RhuMapView = view.findViewById(R.id.rhu_view_map);
 
 
         // Set an OnClickListener on the back button
@@ -54,6 +56,23 @@ public class FacilitiesFragment extends Fragment {
 
 
         FireMapView.setOnClickListener(FireMapViewClickListener);
+
+
+        View.OnClickListener MdrrmoMapViewClickListener = v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_facilities_to_MdrrmoStation);
+        };
+
+
+        MdrrmoMapView.setOnClickListener(MdrrmoMapViewClickListener);
+
+        View.OnClickListener RhuMapViewClickListener = v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_facilities_to_RhuStation);
+        };
+
+
+        RhuMapView.setOnClickListener(RhuMapViewClickListener);
 
 
         return view;

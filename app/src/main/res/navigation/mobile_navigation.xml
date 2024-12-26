@@ -532,6 +532,25 @@
             app:popExitAnim="@anim/fadeout_services"
             />
 
+        <action
+            android:id="@+id/action_facilities_to_MdrrmoStation"
+            app:destination="@id/navigation_MdrrmoStation"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+        <action
+            android:id="@+id/action_facilities_to_RhuStation"
+            app:destination="@id/navigation_RhuStation"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
+
     </fragment>
 
 
@@ -548,6 +567,19 @@
         android:name="com.example.hellorescue.client.FireStationFragment"
         android:label="Fire Station"
         tools:layout="@layout/fire_station" />
+
+    <fragment
+        android:id="@+id/navigation_MdrrmoStation"
+        android:name="com.example.hellorescue.client.MdrrmoStationFragment"
+        android:label="Mdrrmmo Station"
+        tools:layout="@layout/mdrrmo_station" />
+
+    <fragment
+        android:id="@+id/navigation_RhuStation"
+        android:name="com.example.hellorescue.client.RhuStationFragment"
+        android:label="Rhu Station"
+        tools:layout="@layout/mdrrmo_station" />
+
 
 
     <fragment

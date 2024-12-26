@@ -176,7 +176,7 @@
             <TextView
 
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="47dp"
                 android:layout_gravity="start"
                 android:fontFamily="@font/inika_regular"
                 android:justificationMode="inter_word"
@@ -284,6 +284,7 @@
                 android:textSize="10sp" />
 
             <LinearLayout
+                android:id="@+id/mdrrmo_view_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/services_shape"
@@ -379,6 +380,7 @@
                 android:textSize="10sp" />
 
             <LinearLayout
+                android:id="@+id/rhu_view_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/services_shape"
