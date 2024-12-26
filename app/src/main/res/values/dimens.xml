@@ -5,4 +5,5 @@
     <dimen name="cbn_bottom_curve_offset">12dp</dimen>
     <dimen name="cbn_fab_top_offset">8dp</dimen>
     <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="image_corner_radius">10dp</dimen>
 </resources>

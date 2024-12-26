@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.hellorescue.client.services.AllNotificationsFragment;
+
 public class NotificationsPagerAdapter extends FragmentStateAdapter {
 
     public NotificationsPagerAdapter(@NonNull Fragment fragment) {

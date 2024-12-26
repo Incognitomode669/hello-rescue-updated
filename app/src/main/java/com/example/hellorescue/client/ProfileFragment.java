@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hellorescue.R;
+import com.example.hellorescue.client.services.AboutUsFragment;
+import com.example.hellorescue.client.services.ChangePasswordFragment;
 
 public class ProfileFragment extends Fragment {
 

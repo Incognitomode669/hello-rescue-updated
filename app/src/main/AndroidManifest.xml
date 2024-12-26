@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Camera permission -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,11 +20,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-
-
-
-
 
     <!-- Specify that the app requires a camera -->
     <uses-feature android:name="android.hardware.camera"
@@ -43,10 +40,21 @@
         android:theme="@style/Theme.HelloWorld"
         tools:targetApi="31">
 
+        <!-- Add FileProvider configuration -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.hellorescue.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCDxZSvkL9P-bAqxgbURYckriIWaaldCsM" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -67,24 +75,17 @@
         </activity>
 
         <activity android:name=".client.PersonalInformationFragment" />
-        <activity android:name=".client.ChangePasswordFragment" />
+        <activity android:name=".client.services.ChangePasswordFragment" />
         <activity android:name=".client.HowToUseFragment" />
-        <activity android:name=".client.AboutUsFragment" />
+        <activity android:name=".client.services.AboutUsFragment" />
         <activity android:name=".client.FAQFragment" />
-
-<!--        <activity-->
-<!--            android:name=".NavBarActivity"-->
-<!--            android:exported="true">-->
-<!--        </activity>-->
-
 
         <activity android:name=".TermsActivity"
             android:exported="true"/>
 
         <activity android:name=".Main_Navigation"
             android:exported="true"
-            android:fitsSystemWindows="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
 
         <activity android:name=".ServicesFragment"
             android:exported="true"/>
@@ -110,7 +111,6 @@
         <activity android:name=".responderpolice.AboutPoliceFragment"
             android:exported="true"/>
 
-
         <activity android:name=".lgu.AdminLguActivity"
             android:exported="true"/>
 
@@ -119,8 +119,6 @@
 
         <activity android:name=".lgu.AddResponderLguFragment"
             android:exported="true"/>
-
-
 
         <activity android:name=".barangay.ResponderBarangayActivity"
             android:exported="true"/>
@@ -139,21 +137,6 @@
 
         <activity android:name=".barangay.AddEligibleUserBarangayFragment"
             android:exported="true"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </application>
 
