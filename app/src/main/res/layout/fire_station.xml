@@ -12,7 +12,7 @@
     <!-- Title -->
 
     <ImageButton
-        android:id="@+id/police_station_back"
+        android:id="@+id/fire_station_back"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_60dp"
         android:fontFamily="@font/inria_serif_bold"
-        android:text="Police Station"
+        android:text="Fire Station"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +124,7 @@
 
     <!-- MapView -->
     <com.google.android.gms.maps.MapView
-        android:id="@+id/police_map_view"
+        android:id="@+id/fire_map_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"

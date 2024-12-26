@@ -523,6 +523,15 @@
             app:popExitAnim="@anim/fadeout_services"
             />
 
+        <action
+            android:id="@+id/action_facilities_to_FireStation"
+            app:destination="@id/navigation_FireStation"
+            app:enterAnim="@anim/fadein_services"
+            app:exitAnim="@anim/fadeout_services"
+            app:popEnterAnim="@anim/fadein_services"
+            app:popExitAnim="@anim/fadeout_services"
+            />
+
     </fragment>
 
 
@@ -533,6 +542,12 @@
         android:name="com.example.hellorescue.client.PoliceStationFragment"
         android:label="Police Station"
         tools:layout="@layout/police_station" />
+
+    <fragment
+        android:id="@+id/navigation_FireStation"
+        android:name="com.example.hellorescue.client.FireStationFragment"
+        android:label="Fire Station"
+        tools:layout="@layout/fire_station" />
 
 
     <fragment

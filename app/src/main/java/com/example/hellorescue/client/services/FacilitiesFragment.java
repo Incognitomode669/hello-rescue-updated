@@ -26,6 +26,8 @@ public class FacilitiesFragment extends Fragment {
 
 
         LinearLayout PoliceMapView = view.findViewById(R.id.police_view_map);
+        LinearLayout FireMapView = view.findViewById(R.id.fire_view_map);
+
 
         // Set an OnClickListener on the back button
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +46,14 @@ public class FacilitiesFragment extends Fragment {
 
 
         PoliceMapView.setOnClickListener(PoliceMapViewClickListener);
+
+        View.OnClickListener FireMapViewClickListener = v -> {
+            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+            navController.navigate(R.id.action_facilities_to_FireStation);
+        };
+
+
+        FireMapView.setOnClickListener(FireMapViewClickListener);
 
 
         return view;

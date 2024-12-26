@@ -30,15 +30,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
 
-public class PoliceStationFragment extends Fragment implements OnMapReadyCallback {
+public class FireStationFragment extends Fragment implements OnMapReadyCallback {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private static final long LOCATION_UPDATE_INTERVAL = 2000L;
     private static final float DEFAULT_ZOOM = 18f;
     private static final float DEFAULT_TILT = 90f;
     private static final LatLng TARGET_LOCATION = new LatLng(10.07991, 124.34261);
-    private static final String TAG = "PoliceStationFragment";
+    private static final String TAG = "FireStationFragment";
 
     private MapView mapView;
     private GoogleMap googleMap;
@@ -60,7 +62,7 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.police_station, container, false);
+        View view = inflater.inflate(R.layout.fire_station, container, false);
         initializeViews(view);
         initializeServices();
         setupMapAndListeners(savedInstanceState);
@@ -68,11 +70,11 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
     }
 
     private void initializeViews(View view) {
-        mapView = view.findViewById(R.id.police_map_view);
+        mapView = view.findViewById(R.id.fire_map_view);
         routeDistanceText = view.findViewById(R.id.route_distance);
         routeEtaText = view.findViewById(R.id.route_eta);
         followUserButton = view.findViewById(R.id.btn_follow_user);
-        ImageButton backButton = view.findViewById(R.id.police_station_back);
+        ImageButton backButton = view.findViewById(R.id.fire_station_back);
 
         backButton.setOnClickListener(v ->
                 Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigateUp());
@@ -81,7 +83,11 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
     private void initializeServices() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newSingleThreadExecutor(r -> {
+            Thread thread = new Thread(r);
+            thread.setDaemon(true); // Makes the thread a daemon thread
+            return thread;
+        });
         initializeLocationCallback();
     }
 
@@ -200,10 +206,13 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
     }
 
     private void drawRoute(LatLng origin, LatLng destination) {
+        if (!isAdded()) return;
+
         databaseReference.child("config").child("api_keys").child("google_maps")
                 .get()
                 .addOnSuccessListener(dataSnapshot -> {
-                    String apiKey = dataSnapshot.getValue(String.class);
+                    if (!isAdded()) return;
+                    String apiKey = dataSnapshot.getValue(String.class); // Fixed the syntax error here
                     if (apiKey != null) {
                         fetchRouteData(origin, destination, apiKey);
                     }
@@ -211,18 +220,30 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
                 .addOnFailureListener(e -> Log.e(TAG, "Failed to retrieve API key", e));
     }
 
+
     private void fetchRouteData(LatLng origin, LatLng destination, String apiKey) {
+        if (executorService == null || executorService.isShutdown()) {
+            Log.e(TAG, "ExecutorService is not available");
+            return;
+        }
+
         String url = String.format("https://maps.googleapis.com/maps/api/directions/json?origin=%f,%f&destination=%f,%f&key=%s",
                 origin.latitude, origin.longitude, destination.latitude, destination.longitude, apiKey);
 
-        executorService.execute(() -> {
-            try {
-                String response = makeHttpRequest(url);
-                processRouteResponse(response);
-            } catch (Exception e) {
-                Log.e(TAG, "Error fetching route", e);
-            }
-        });
+        try {
+            executorService.execute(() -> {
+                try {
+                    String response = makeHttpRequest(url);
+                    if (isAdded()) {
+                        processRouteResponse(response);
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "Error fetching route", e);
+                }
+            });
+        } catch (RejectedExecutionException e) {
+            Log.e(TAG, "Task rejected", e);
+        }
     }
 
     private String makeHttpRequest(String urlString) throws Exception {
@@ -240,7 +261,6 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
             connection.disconnect();
         }
     }
-
 
     private void processRouteResponse(String response) {
         try {
@@ -342,11 +362,21 @@ public class PoliceStationFragment extends Fragment implements OnMapReadyCallbac
 
     @Override
     public void onDestroy() {
+        if (executorService != null) {
+            try {
+                executorService.shutdown();
+                if (!executorService.awaitTermination(500, TimeUnit.MILLISECONDS)) {
+                    executorService.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                executorService.shutdownNow();
+                Thread.currentThread().interrupt();
+            } finally {
+                executorService = null;
+            }
+        }
         super.onDestroy();
         mapView.onDestroy();
-        if (executorService != null && !executorService.isShutdown()) {
-            executorService.shutdown();
-        }
     }
 
     @Override
