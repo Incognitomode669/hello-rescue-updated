@@ -51,9 +51,6 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCDxZSvkL9P-bAqxgbURYckriIWaaldCsM" />
 
         <activity
             android:name=".MainActivity"
